@@ -1,0 +1,40 @@
+*{box-sizing:border-box;padding:0;margin:0;}
+html,body,#root{width:100vw;height:100vh;position:relative;
+background-color:rgb(90, 126, 90);
+overflow:hidden overlay ;
+padding:5px;
+}
+
+.pixelFont{
+font-family:"Press Start 2P", cursive;
+font-size:1rem;
+}
+
+input::placeholder{
+color:#0affa1;
+}
+input:hover::placeholder{
+color:#ff9f9f;
+}
+
+input:is(
+  [type="button"],
+  [type="submit"],
+  [type="time"],
+  [type="text"],
+  [type="password"]
+):hover{
+  scale: 107.6%;
+  opacity:0.8;
+  color:#ff9f9f !important;
+}
+
+.controll:hover{
+scale: 130%;
+opacity:0.8;
+color:#ff9f9f !important;
+}
+
+input{
+text-align:center;
+}
