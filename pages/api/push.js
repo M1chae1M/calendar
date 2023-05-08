@@ -13,10 +13,10 @@ module.exports=(req, res)=>{
 
     // myPromise(query);
     const connection=ConnectionWithDB()
-    connection.query(query
+    connection.query(query);
         // , (error, results, fields) => {
         // error && reject(error);
         // resolve(results);
         // }
-        );
+        // );
 }
