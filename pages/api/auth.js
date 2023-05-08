@@ -10,7 +10,8 @@ module.exports=(req, res)=>{
 
     const verification=JWT.decode(token, verifiKey);
     if (verification!==null){
-        const query=`SELECT * from ${process.env.DB_ALERTS_TABLE} WHERE ${process.env.DB_ALERTS_TABLE}.user="${verification.login}"`;
+        // const query=`SELECT * from ${process.env.DB_ALERTS_TABLE} WHERE ${process.env.DB_ALERTS_TABLE}.user="${verification.login}"`;
+        const query=`SELECT * from alerts WHERE alerts.user="${verification.login}"`;
         myPromise(query)
         // const connection=ConnectionWithDB();
         // new Promise((resolve, reject) => {

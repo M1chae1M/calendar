@@ -7,7 +7,8 @@ module.exports=(req, res)=>{
     const {token, newAlerts}=body
     const stringed=JSON.stringify(newAlerts)
     const decodedData=JWT.decode(token,verifiKey)
-    const query=`UPDATE ${process.env.DB_ALERTS_TABLE} SET alerts = '${stringed}' WHERE ${process.env.DB_ALERTS_TABLE}.user = '${decodedData.login}';`
+    // const query=`UPDATE ${process.env.DB_ALERTS_TABLE} SET alerts = '${stringed}' WHERE ${process.env.DB_ALERTS_TABLE}.user = '${decodedData.login}';`
+    const query=`UPDATE alerts SET alerts = '${stringed}' WHERE alerts.user = '${decodedData.login}';`
 
     myPromise(query)
 }
