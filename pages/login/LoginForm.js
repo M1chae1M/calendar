@@ -67,7 +67,8 @@ export default class LoginForm extends Component{
             const login=loginRef.current.value;
             const password=passwordRef.current.value;
 
-            fetchPOST('/api/login',{login, password})
+            // fetchPOST(`${process.env.API_URL}login`,{login, password})
+            fetchPOST(`${process.env.API_URL}login`,{login, password})
             .then(({token, logged, message, alerts})=>
             changeStates({token, logged, message, alerts},
                 ()=>{

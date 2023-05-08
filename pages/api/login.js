@@ -1,5 +1,6 @@
 import {verifiKey} from './verifiKey';
 // import {myPromise} from './promiseF';
+import {ConnectionWithDB} from "./connectionWithDB";
 
 export const mysql=require('mysql2');
 export const jwt=require('jsonwebtoken');
