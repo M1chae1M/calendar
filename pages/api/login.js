@@ -1,5 +1,5 @@
 import {verifiKey} from './verifiKey';
-import {myPromise} from './promiseF';
+// import {myPromise} from './promiseF';
 
 export const mysql=require('mysql2');
 export const jwt=require('jsonwebtoken');
@@ -11,7 +11,14 @@ module.exports=(req, res)=>{
     const queryForAlerts=`SELECT * from ${process.env.DB_ALERTS_TABLE} WHERE ${process.env.DB_ALERTS_TABLE}.user="${login}"`;
     const verifiToken=jwt.sign({login, password}, verifiKey);
 
-    myPromise(query)
+    // myPromise(query)
+    const connection=ConnectionWithDB();
+    new Promise((resolve, reject) => {
+        connection.query(query, (error, results, fields) => {
+        error && reject(error);
+        resolve(results);
+        });
+    })
     .then(data=>{
         Array.from(data).length>0?
             myPromise(queryForAlerts)
