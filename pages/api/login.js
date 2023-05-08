@@ -1,5 +1,5 @@
 import {verifiKey} from './verifiKey';
-// import {myPromise} from './promiseF';
+import {myPromise} from './promiseF';
 import {ConnectionWithDB} from "./connectionWithDB";
 
 export const mysql=require('mysql2');
@@ -14,18 +14,26 @@ module.exports=(req, res)=>{
     const queryForAlerts=`SELECT * from alerts WHERE alerts.user="${login}"`;
     const verifiToken=jwt.sign({login, password}, verifiKey);
 
-    // myPromise(query)
-    const connection=ConnectionWithDB();
-    new Promise((resolve, reject) => {
-        connection.query(query, (error, results, fields) => {
-        error && reject(error);
-        resolve(results);
-        });
-    })
-    .then(data=>{
-        Array.from(data).length>0?
+    myPromise(query)
+    // const connection=ConnectionWithDB();
+    // new Promise((resolve, reject) => {
+    //     connection.query(query, (error, results, fields) => {
+    //     error && reject(error);
+    //     resolve(results);
+    //     });
+    // })
+    .then((data)=>{
+        // console.log(data)
+        // console.log(data.length)
+        // console.log(data.length>0)
+
+        // data.length>0 ? console.log('tak'):console.log('nie')
+        if(data.length>0){
             myPromise(queryForAlerts)
-            .then(alrt=>res.status(200).json({token:verifiToken, logged:true, message:'', alerts:alrt[0]})):
-                res.status(200).json({message:'Login failed!!!', logged:false})
+            .then(alrt=>res.status(200).json({token:verifiToken, logged:true, message:'', alerts:alrt[0]}))
+        }
+        else{
+            res.status(200).json({message:'Login failed!!!', logged:false})
+        }
     })
 }

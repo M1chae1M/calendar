@@ -70,6 +70,8 @@ export default class LoginForm extends Component{
             // fetchPOST(`${process.env.API_URL}login`,{login, password})
             // fetchPOST(`${process.env.API_URL}login`,{login, password})
             fetchPOST(`https://calendar-test-m1.netlify.app/api/login`,{login, password})
+            // fetchPOST(`http://localhost:3000/api/login`,{login, password})
+            
             .then(({token, logged, message, alerts})=>
             changeStates({token, logged, message, alerts},
                 ()=>{
