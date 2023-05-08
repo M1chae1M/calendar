@@ -1,5 +1,6 @@
 import {verifiKey} from './verifiKey';
 import {myPromise} from './promiseF';
+import {ConnectionWithDB} from './connectionWithDB';
 export const JWT = require('jsonwebtoken');
 
 module.exports=(req, res)=>{
@@ -10,5 +11,11 @@ module.exports=(req, res)=>{
     // const query=`UPDATE ${process.env.DB_ALERTS_TABLE} SET alerts = '${stringed}' WHERE ${process.env.DB_ALERTS_TABLE}.user = '${decodedData.login}';`;
     const query=`UPDATE alerts SET alerts = '${stringed}' WHERE alerts.user = '${decodedData.login}';`;
 
-    myPromise(query);
+    // myPromise(query);
+    ConnectionWithDB().query(query
+        // , (error, results, fields) => {
+        // error && reject(error);
+        // resolve(results);
+        // }
+        );
 }
