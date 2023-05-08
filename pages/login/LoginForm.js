@@ -83,8 +83,9 @@ export default class LoginForm extends Component{
         const singUp=()=>{
             const login=loginRef.current.value;
             const password=passwordRef.current.value;
-
-            fetchPOST('/api/singup',{login, password})
+            
+            // fetchPOST('/api/singup',{login, password})
+            fetchPOST('https://calendar-test-m1.netlify.app/api/singup',{login, password})
             .then(({message})=>changeStates({message}))
         }
         return(
