@@ -18,8 +18,8 @@ const AuthHOC=(ToWrap)=>{
         auth(component){
             const tryToken=localStorage.getItem('token')?JSON.parse(localStorage.getItem('token')):'';
             component.setState({token:tryToken},()=>{
-                fetchPOST(`${process.env.API_URL}auth`,{token:tryToken})
-                // fetchPOST(`https://m1chae1m-calendar.netlify.app/api/auth`,{token:tryToken})
+                // fetchPOST(`${process.env.API_URL}auth`,{token:tryToken})
+                fetchPOST(`https://calendar-test-m1.netlify.app/api/auth`,{token:tryToken})
                 .then(({logged, message, alerts})=>component.setState({logged, message, alerts, loadingState:false}))
             })
         }
