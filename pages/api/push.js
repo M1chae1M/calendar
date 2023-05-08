@@ -12,7 +12,8 @@ module.exports=(req, res)=>{
     const query=`UPDATE alerts SET alerts = '${stringed}' WHERE alerts.user = '${decodedData.login}';`;
 
     // myPromise(query);
-    ConnectionWithDB().query(query
+    const connection=ConnectionWithDB()
+    connection.query(query
         // , (error, results, fields) => {
         // error && reject(error);
         // resolve(results);
