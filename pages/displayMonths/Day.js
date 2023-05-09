@@ -14,12 +14,12 @@ export default class Day extends Component{
   render(){
     const {day, data, alerts, changeAlerts, withAlert}=this.props;
     const {showModal}=this.state;
-    const {startsFrom}=data ?? 0;
+    const {startsFrom}=data??0;
     const styles={
       Day:{
         userSelect:'none',
         color:colors.light_green,
-        gridColumnStart:day===1 ? startsFrom===0 ? 7 : startsFrom : 'auto',
+        gridColumnStart:day===1?startsFrom===0?7:startsFrom:'auto',
         width:'20px',
         height:'20px',
         display:'grid',
@@ -27,12 +27,12 @@ export default class Day extends Component{
         alignItems:'center',
         display:'inline-block',
         justifyContent:'center',
-        backgroundColor:!withAlert ? 'rgb(63, 62, 62)' : 'red',
+        backgroundColor:!withAlert?'rgb(63, 62, 62)':'red',
         border:'solid #0affa1 1px',
       }
     }
     const addNewAlertFunction=()=>{
-      const {month, year}=data ?? {};
+      const {month, year}=data??{};
       const newAlertText=textOfNewAlert.current.value;
       const newTaskID=new Date().getTime();
       

@@ -46,7 +46,7 @@ export default class AddNewAlertForm extends Component{
         return(
             <DayStateProvider.Consumer>
             {value=>{
-                const {alarmHourRef, textOfNewAlert, addNewAlertFunction}=value ?? {};
+                const {alarmHourRef, textOfNewAlert, addNewAlertFunction}=value??{};
                 const onSubmit=(e)=>{
                     e.preventDefault()
                     addNewAlertFunction()

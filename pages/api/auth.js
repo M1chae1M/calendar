@@ -12,7 +12,7 @@ module.exports=(req, res)=>{
     if (verification!==null){
         const query=`SELECT * from alerts WHERE alerts.user="${verification.login}"`;
         myPromise(query)
-        .then(data=>res.status(200).json(verification ? {logged:true, message:'', alerts:data[0]} : {logged:false, message:''}));
+        .then(data=>res.status(200).json(verification?{logged:true, message:'', alerts:data[0]}:{logged:false, message:''}));
     }
     else res.status(200).json({logged: false, message: ''});
 }
