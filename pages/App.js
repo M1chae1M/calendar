@@ -56,7 +56,10 @@ class Applic extends Component{
     const changeAlerts=(newAlerts)=>{
       this.setState({alerts:newAlerts},()=>{
         // fetch('/api/push',{
-        fetch('https://calendar-test-m1.netlify.app/api/push',{
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}push`,{
+        // fetch('https://calendar-test-m1.netlify.app/api/push',{
+
+        
           method:'POST',
           headers:{'Content-Type':'application/json'},
           body:JSON.stringify({token, newAlerts})

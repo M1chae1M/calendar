@@ -19,8 +19,9 @@ const AuthHOC=(ToWrap)=>{
             const tryToken=localStorage.getItem('token')?JSON.parse(localStorage.getItem('token')):'';
             component.setState({token:tryToken},()=>{
                 // fetchPOST(`${process.env.API_URL}auth`,{token:tryToken})
-                fetchPOST(`https://calendar-test-m1.netlify.app/api/auth`,{token:tryToken})
+                // fetchPOST(`https://calendar-test-m1.netlify.app/api/auth`,{token:tryToken})
                 // fetchPOST(`http://localhost:3000/api/auth`,{token:tryToken})
+                fetchPOST(`${process.env.NEXT_PUBLIC_API_URL}auth`,{token:tryToken})
                 .then(({logged, message, alerts})=>component.setState({logged, message, alerts, loadingState:false}))
             })
         }
