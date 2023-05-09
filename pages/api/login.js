@@ -15,20 +15,15 @@ module.exports=(req, res)=>{
     const queryForAlerts=`SELECT * from alerts WHERE alerts.user="${login}"`;
     const verifiToken=jwt.sign({login, password}, verifiKey);
 
-    myPromise(query,(err)=>{console.log(err)})
-    // const connection=ConnectionWithDB();
-    // new Promise((resolve, reject) => {
-    //     connection.query(query, (error, results, fields) => {
-    //     error && reject(error);
-    //     resolve(results);
-    //     });
-    // })
+    // myPromise(query,(err)=>{console.log(err)})
+    const connection=ConnectionWithDB();
+    new Promise((resolve, reject) => {
+        connection.query(query, (error, results, fields) => {
+        error && reject(error);
+        resolve(results);
+        });
+    })
     .then((data)=>{
-        // console.log(data)
-        // console.log(data.length)
-        // console.log(data.length>0)
-
-        // data.length>0 ? console.log('tak'):console.log('nie')
         if(data.length>0){
             myPromise(queryForAlerts,(err)=>{console.log(err)})
             .then(alrt=>res.status(200).json({token:verifiToken, logged:true, message:'', alerts:alrt[0]}))
