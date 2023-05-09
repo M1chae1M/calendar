@@ -4,7 +4,7 @@ import Label from "../little_components/Label";
 import {fetchPOST} from "../AuthHOC";
 
 export const loginRef=React.createRef();
-export const passwordRef=React.createRef();
+export const psswRef=React.createRef();
 
 export default class LoginForm extends Component{
     render(){
@@ -65,7 +65,7 @@ export default class LoginForm extends Component{
 
             e.preventDefault();
             const login=loginRef.current.value;
-            const password=passwordRef.current.value;
+            const password=psswRef.current.value;
 
             fetchPOST(`${process.env.NEXT_PUBLIC_API_URL}login`,{login, password})
             .then(({token, logged, message, alerts})=>
@@ -78,7 +78,7 @@ export default class LoginForm extends Component{
         }
         const singUp=()=>{
             const login=loginRef.current.value;
-            const password=passwordRef.current.value;
+            const password=psswRef.current.value;
             
             fetchPOST(`${process.env.NEXT_PUBLIC_API_URL}singup`,{login, password})
             .then(({message})=>changeStates({message}))
@@ -93,7 +93,7 @@ export default class LoginForm extends Component{
                         <Label>Login</Label>
                         <input style={styles.textInputs} type='text' ref={loginRef} placeholder='login' required/>
                         <Label>Password</Label>
-                        <input style={styles.textInputs} type='password' ref={passwordRef} placeholder='password' required/>
+                        <input style={styles.textInputs} type='password' ref={psswRef} placeholder='password' required/>
                         <div style={styles.buttons}>
                             <input style={styles.button} type="button" value="sign up" onClick={singUp}/>
                             <input style={styles.button} type='submit' value='login'/>
