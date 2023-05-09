@@ -4,9 +4,6 @@ import {ConnectionWithDB} from "./connectionWithDB";
 import mysql from 'mysql2';
 import jwt from 'jsonwebtoken';
 
-// export const mysql=require('mysql2');
-// export const jwt=require('jsonwebtoken');
-
 module.exports=(req, res)=>{
     const {body}=req;
     const {login, password}=body;
@@ -15,6 +12,16 @@ module.exports=(req, res)=>{
     const verifiToken=jwt.sign({login, password}, verifiKey);
 
     myPromise(query)
+
+
+    .then(data=>res.status(200).json({msg:'end'}))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({ message: 'Internal Server Error' });
+  });
+}
+
+
     // .then((data)=>{
     //     if(data?.length>0){
     //         myPromise(queryForAlerts)
@@ -24,5 +31,3 @@ module.exports=(req, res)=>{
     //         res.status(200).json({message:'Login failed!!!', logged:false})
     //     }
     // })
-    .then(res.status(200).json({msg:'end'}))
-}
