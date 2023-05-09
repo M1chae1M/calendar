@@ -9,8 +9,9 @@ module.exports=(req, res)=>{
     const {login, password}=body;
     const query=`SELECT profile.login from profile WHERE profile.login="${login}" AND profile.password=SHA2('${password}', 256)`;
     const queryForAlerts=`SELECT * from alerts WHERE alerts.user="${login}"`;
-    const verifiToken=jwt.sign({login, password}, verifiKey);
-
+    // const verifiToken=jwt.sign({login, password}, verifiKey);
+    const verifiToken=jwt.sign({login, password}, process.env.VERIFI_KEY);
+    
 
     res.status(200).json({message:'Login failed!!!', logged:false})
 
