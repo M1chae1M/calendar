@@ -10,11 +10,12 @@ export default class ChangeYearMenu extends Component{
               textAlign:'center',
             },
         }
+        const year=daysInMonths?.[0]?.year
         return(
             <div id="changeYear" style={styles.changeYear}>
                 <Label>
                     <ChangeYearButton change={-1}/>
-                        {daysInMonths?.[0]?.year}
+                        {year}
                     <ChangeYearButton change={+1}/>
                 </Label>
             </div>

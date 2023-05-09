@@ -8,7 +8,6 @@ export const jwt=require('jsonwebtoken');
 module.exports=(req, res)=>{
     const {body}=req;
     const {login, password}=body;
-    // const query=`SELECT ${process.env.DB_PROFILE_TABLE}.login from ${process.env.DB_PROFILE_TABLE} WHERE ${process.env.DB_PROFILE_TABLE}.login="${login}" AND ${process.env.DB_PROFILE_TABLE}.password=SHA2('${password}', 256)`;
     const query=`SELECT profile.login from profile WHERE profile.login="${login}" AND ${process.env.DB_PROFILE_TABLE}.password=SHA2('${password}', 256)`;
     // const queryForAlerts=`SELECT * from ${process.env.DB_ALERTS_TABLE} WHERE ${process.env.DB_ALERTS_TABLE}.user="${login}"`;
     const queryForAlerts=`SELECT * from alerts WHERE alerts.user="${login}"`;

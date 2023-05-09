@@ -55,11 +55,7 @@ class Applic extends Component{
     }
     const changeAlerts=(newAlerts)=>{
       this.setState({alerts:newAlerts},()=>{
-        // fetch('/api/push',{
         fetch(`${process.env.NEXT_PUBLIC_API_URL}push`,{
-        // fetch('https://calendar-test-m1.netlify.app/api/push',{
-
-        
           method:'POST',
           headers:{'Content-Type':'application/json'},
           body:JSON.stringify({token, newAlerts})
@@ -75,10 +71,8 @@ class Applic extends Component{
           <Month key={y.month} data={y}>
             {Array(y.days).fill(0).map((x,i)=>
               <Day
-                key={i+1} data={y}
+                key={i+1} data={y} changeAlerts={changeAlerts} alerts={alerts} day={i+1}
                 withAlert={alerts?.[y.year]?.[y.month]?.[i+1]?.length>0?true:false}
-                alerts={alerts} day={i+1}
-                changeAlerts={changeAlerts}
               />
             )}
           </Month>)

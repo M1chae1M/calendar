@@ -1,25 +1,17 @@
 import {verifiKey} from './verifiKey';
 import {myPromise} from './promiseF';
 import {ConnectionWithDB} from './connectionWithDB';
-export const JWT = require('jsonwebtoken');
+export const JWT=require('jsonwebtoken');
 
 module.exports=(req, res)=>{
     const {body}=req;
     const {token, newAlerts}=body??'';
     const stringed=JSON.stringify(newAlerts);
     const decodedData=JWT.decode(token,verifiKey);
-    // const query=`UPDATE ${process.env.DB_ALERTS_TABLE} SET alerts = '${stringed}' WHERE ${process.env.DB_ALERTS_TABLE}.user = '${decodedData.login}';`;
-    // const query=`UPDATE alerts SET alerts = '${stringed}' WHERE alerts.user = '${decodedData.login}';`;
-const query = `INSERT INTO alerts (user, alerts) VALUES ('${decodedData.login}', '${stringed}') ON DUPLICATE KEY UPDATE alerts = '${stringed}';`;
-
-    // myPromise(query);
-    const connection=ConnectionWithDB()
-    connection.query(query,(err)=>{
+    const {login}=decodedData;
+    const query=`INSERT INTO alerts (user, alerts) VALUES ('${login}', '${stringed}') ON DUPLICATE KEY UPDATE alerts='${stringed}';`;
+    
+    ConnectionWithDB().query(query,(err)=>{
         res.send(err)
     });
-        // , (error, results, fields) => {
-        // error && reject(error);
-        // resolve(results);
-        // }
-        // );
 }

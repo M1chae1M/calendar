@@ -47,31 +47,20 @@ export default class AddNewAlertForm extends Component{
             <DayStateProvider.Consumer>
             {value=>{
                 const {alarmHourRef, textOfNewAlert, addNewAlertFunction}=value ?? {};
+                const onSubmit=(e)=>{
+                    e.preventDefault()
+                    addNewAlertFunction()
+                }
+                const closeForm=(e)=>{
+                    e.stopPropagation();
+                    showModalF(false);
+                }
                 return(
-                    <form style={styles.form} onSubmit={(e)=>{
-                        e.preventDefault()
-                        addNewAlertFunction()
-                    }}>
-                        <input
-                            style={styles.inputs}
-                            type="time"
-                            defaultValue={'12:00'}
-                            ref={alarmHourRef}
-                        />                
-                        <input
-                            style={{...styles.inputs, ...styles.rightInput}}
-                            type="text"
-                            placeholder="new alert"
-                            id="addAlert"
-                            ref={textOfNewAlert}
-                        />
+                    <form style={styles.form} onSubmit={onSubmit}>
+                        <input style={styles.inputs} type="time" defaultValue={'12:00'} ref={alarmHourRef}/>                
+                        <input style={{...styles.inputs, ...styles.rightInput}} type="text" placeholder="new alert" id="addAlert" ref={textOfNewAlert}/>
                         <input style={styles.button} type="submit" value="add"/>
-                        <AiFillCloseCircle className="controll" style={styles.Close}
-                            onClick={(e)=>{
-                                e.stopPropagation();
-                                showModalF(false);
-                            }}
-                        />
+                        <AiFillCloseCircle className="controll" style={styles.Close} onClick={closeForm}/>
                     </form>
                 )
             }}

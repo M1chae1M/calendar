@@ -3,7 +3,6 @@ import {colors} from "../AuthHOC";
 import React, {Component} from "react";
 import Label from "../little_components/Label";
 import AddNewAlertForm from "./AddNewAlertForm";
-// import App from '../App';
 
 export default class AddNewAlert extends Component{
     render(){
@@ -81,20 +80,17 @@ export default class AddNewAlert extends Component{
                 <Label style={styles.header}>add new alert</Label>
                     <AddNewAlertForm showModalF={showModalF}/>
                     <div style={styles.alertsContainer}>
-                    {
-                        alerts?.[year]?.[month]?.[day]&&                    
-                        Array.from(alerts[year][month][day])
-                        .sort((a, b)=>a.hour<b.hour?-1:a.hour>b.hour?1:0)
-                        .map(({ID, hour, text})=>
-                            <Alert
-                                key={ID} changeTask={changeTask} text={text}
-                                hour={hour} deleteAlert={deleteAlert} ID={ID}
-                            />
-                        )
-                    }
-
-                    {/* App:
-                    <App/> */}
+                        {
+                            alerts?.[year]?.[month]?.[day]&&                    
+                            Array.from(alerts[year][month][day])
+                            .sort((a, b)=>a.hour<b.hour?-1:a.hour>b.hour?1:0)
+                            .map(({ID, hour, text})=>
+                                <Alert
+                                    key={ID} changeTask={changeTask} text={text}
+                                    hour={hour} deleteAlert={deleteAlert} ID={ID}
+                                />
+                            )
+                        }
                     </div>
                 </div>
             </div>
