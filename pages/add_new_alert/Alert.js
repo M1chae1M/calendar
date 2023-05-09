@@ -8,14 +8,10 @@ export default class Alert extends Component{
             Alert:{
                 justifyContent:'center',
                 display:'grid',
-                // gridTemplateColumns:'25% 50% calc(25% - 5px)',
                 gridTemplateColumns:'25% 50% calc(25%)',
-                // gridTemplateColumns:'calc(25% - 2.5px) 50% calc(25% - 2.5px)',
                 height:'30px',
                 width:'1fr',
                 overflow:'hidden',
-                // overflow:'visible',
-                // margin:'0',
             },
             inputs:{
                 color:colors.light_green,

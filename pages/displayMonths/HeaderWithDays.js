@@ -21,9 +21,6 @@ export default class HeaderWithDays extends Component{
         display:'grid',
         justifyItems:'center',
         borderBottom:'none',
-        // border:'solid black 1px',
-        // backgroundColor:'rgb(168, 168, 168)',
-        // display:'grid',
       },
       namesOfDays:{
         display:'inline-blocks',
@@ -40,8 +37,6 @@ export default class HeaderWithDays extends Component{
         textShadow:`1px 1px ${colors.light_green}`,
         fontFamily:'sant-serif',
         margin:'0',
-        // textShadow:`1px 1px ${colors.white}`,
-        // border:'solid black 1px',
       },
     }
     const namesOfDays=['M','T','W','T','F','S','S'];

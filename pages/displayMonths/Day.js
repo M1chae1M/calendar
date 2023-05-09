@@ -14,7 +14,6 @@ export default class Day extends Component{
   render(){
     const {day, data, alerts, changeAlerts, withAlert}=this.props;
     const {showModal}=this.state;
-    // const {startsFrom}=data ?? {};
     const {startsFrom}=data ?? 0;
     const styles={
       Day:{
@@ -53,9 +52,6 @@ export default class Day extends Component{
         <div className="Day controll" style={styles.Day} onClick={()=>{
           showModalF(true)
           // podświetlaj wszystkie odpowiadające dni tygodnia w tym miesiącu
-          // console.log(data)
-          // console.log(new Date(data.year, data.month, day))
-          // console.log(`${data.year} ${data.month} ${day}`)
         }}>{day}</div>
         {
           showModal &&

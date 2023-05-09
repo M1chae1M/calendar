@@ -3,7 +3,6 @@ import {colors} from "../AuthHOC";
 import React, {Component} from "react";
 import Label from "../little_components/Label";
 import AddNewAlertForm from "./AddNewAlertForm";
-// import App from '../App';
 
 export default class AddNewAlert extends Component{
     render(){
