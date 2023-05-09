@@ -9,16 +9,22 @@ module.exports=(req, res)=>{
     const {login, password}=body;
     const query=`SELECT profile.login from profile WHERE profile.login="${login}" AND profile.password=SHA2('${password}', 256)`;
     const queryForAlerts=`SELECT * from alerts WHERE alerts.user="${login}"`;
-    const verifiToken=jwt.sign({login, password}, verifiKey);
-
-    myPromise(query)
+    // const verifiToken=jwt.sign({login, password}, verifiKey);
 
 
-    .then(data=>res.status(200).json({msg:'end'}))
-    .catch(err => {
-      console.log(err);
-      res.status(500).json({ message: 'Internal Server Error' });
-  });
+    res.status(200).json({message:'Login failed!!!', logged:false})
+
+    // myPromise(query)
+
+
+    // .then(data=>res.status(200).json({msg:'end'}))
+
+
+
+  //   .catch(err => {
+  //     console.log(err);
+  //     res.status(500).json({ message: 'Internal Server Error' });
+  // });
 }
 
 
