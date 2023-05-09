@@ -12,10 +12,10 @@ module.exports=(req, res)=>{
     const queryForAlerts=`SELECT * from alerts WHERE alerts.user="${login}"`;
     const verifiToken=jwt.sign({login, password}, verifiKey);
 
-    myPromise(query)
+    myPromise(query,(err)=>{console.log(err)})
     .then((data)=>{
         if(data.length>0){
-            myPromise(queryForAlerts)
+            myPromise(queryForAlerts,(err)=>{console.log(err)})
             .then(alrt=>res.status(200).json({token:verifiToken, logged:true, message:'', alerts:alrt[0]}))
         }
         else{
