@@ -1,5 +1,5 @@
 import Label from "../little_components/Label";
-import React,{Component, Fragment} from "react";
+import React,{Component} from "react";
 import ChangeYearButton from "./ChangeYearButton";
 
 export default class ChangeYearMenu extends Component{
@@ -10,11 +10,12 @@ export default class ChangeYearMenu extends Component{
               textAlign:'center',
             },
         }
+        const year=daysInMonths?.[0]?.year
         return(
             <div id="changeYear" style={styles.changeYear}>
                 <Label>
                     <ChangeYearButton change={-1}/>
-                        {daysInMonths?.[0]?.year}
+                        {year}
                     <ChangeYearButton change={+1}/>
                 </Label>
             </div>
