@@ -11,7 +11,6 @@ module.exports=(req, res)=>{
     const queryForAlerts=`SELECT * from alerts WHERE alerts.user="${login}"`;
 
     const verifiToken=jwt.sign({login, password}, verifiKey);
-    // const verifiToken=jwt.sign({login, password}, process.env.VERIFI_KEY);
 
     myPromise(query)
     .then((data)=>{
