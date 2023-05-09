@@ -16,39 +16,10 @@ module.exports=(req, res)=>{
     const verifiToken=jwt.sign({login, password}, verifiKey);
 
     myPromise(query)
-    // myPromise(query,(err)=>{console.log(err)})
-    // const connection=ConnectionWithDB();
-    // new Promise((resolve, reject) => {
-    //     connection.query(query, (error, results, fields) => {
-    //     error && reject(error);
-    //     resolve(results);
-    //     });
-    // })
     .then((data)=>{
-        // console.log(data)
-        // res.status(200).json({data})
         if(data?.length>0){
-            // res.status(200).json({data})
-            const connection=ConnectionWithDB();
-
-            // new Promise((resolve, reject) => {
-            //     connection.query(queryForAlerts, (error, results, fields) => {
-            //     error && reject(error);
-            //     resolve(results);
-            //     });
-            // })
-            new Promise((resolve, reject) => {
-                connection.query(queryForAlerts, (error, results, fields) => {
-                error && reject(error);
-                resolve(results);
-                });
-            })
+            myPromise(queryForAlerts)
             .then((alrt)=>res.status(200).json({token:verifiToken, logged:true, message:'', alerts:alrt[0]}))
-
-
-        //     myPromise(queryForAlerts)
-        //     // myPromise(queryForAlerts,(err)=>{console.log(err)})
-        //     .then(alrt=>res.status(200).json({token:verifiToken, logged:true, message:'', alerts:alrt[0]}))
         }
         else{
             res.status(200).json({message:'Login failed!!!', logged:false})
