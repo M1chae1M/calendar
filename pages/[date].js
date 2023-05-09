@@ -17,6 +17,6 @@ export async function getStaticProps({params}){
 export default class WithDate extends Component{
     render(){
         const {dataFromURL}=this.props;
-        return <>{dataFromURL && <App dataFromURL={dataFromURL}/>}</>
+        return <Fragment>{dataFromURL && <App dataFromURL={dataFromURL}/>}</Fragment>
     }
 }

@@ -18,6 +18,9 @@ const AuthHOC=(ToWrap)=>{
         auth(component){
             const tryToken=localStorage.getItem('token')?JSON.parse(localStorage.getItem('token')):'';
             component.setState({token:tryToken},()=>{
+                // fetchPOST(`${process.env.API_URL}auth`,{token:tryToken})
+                // fetchPOST(`https://calendar-test-m1.netlify.app/api/auth`,{token:tryToken})
+                // fetchPOST(`http://localhost:3000/api/auth`,{token:tryToken})
                 fetchPOST(`${process.env.NEXT_PUBLIC_API_URL}auth`,{token:tryToken})
                 .then(({logged, message, alerts})=>component.setState({logged, message, alerts, loadingState:false}))
             })
@@ -55,11 +58,16 @@ const AuthHOC=(ToWrap)=>{
             return(
                 <div>
                     <title>Calendar</title>
-                    {loadingState && <ImSpinner9 style={styles.Spinner}/>}
+                    {loadingState===true && <ImSpinner9 style={styles.Spinner}/>}
                     {logged && <BiLogOut style={styles.logout} onClick={logout} className="controll"/>}
                     {
-                    !loadingState && logged && <ToWrap alerts={downloadedAlerts} logged={logged} {...this.props} token={token}/>}
-                    {!loadingState && !logged &&
+                    loadingState===false && logged &&
+                    <ToWrap
+                        alerts={downloadedAlerts} logged={logged}
+                        {...this.props}
+                        token={token}
+                    />}
+                    {loadingState===false && !logged &&
                     <LoginForm changeStates={changeStates} logged={logged} message={message} {...this.props}/>}
                 </div>
             )
