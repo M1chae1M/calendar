@@ -9,7 +9,7 @@ module.exports=(req, res)=>{
     const {login, password}=body;
     const query=`SELECT profile.login from profile WHERE profile.login="${login}" AND profile.password=SHA2('${password}', 256)`;
     const queryForAlerts=`SELECT * from alerts WHERE alerts.user="${login}"`;
-    
+
     // const verifiToken=jwt.sign({login, password}, verifiKey);
     const verifiToken=jwt.sign({login, password}, process.env.VERIFI_KEY);
     
@@ -28,7 +28,7 @@ module.exports=(req, res)=>{
         }
     })
 
-    .then(data=>res.status(200).json({msg:'end'}))
+    // .then(data=>res.status(200).json({msg:'end'}))
 
 
 
