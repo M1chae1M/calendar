@@ -1,5 +1,5 @@
 import {colors} from "../AuthHOC";
-import React, {Component, Fragment} from "react";
+import React, {Component} from "react";
 import AddNewAlert from "../add_new_alert/AddNewAlert";
 
 const alarmHourRef=React.createRef();
@@ -48,7 +48,7 @@ export default class Day extends Component{
     }
     const showModalF=(newState)=>this.setState({showModal:newState})
     return(
-      <Fragment>
+      <>
         <div className="Day controll" style={styles.Day} onClick={()=>{
           showModalF(true)
           // podświetlaj wszystkie odpowiadające dni tygodnia w tym miesiącu
@@ -56,14 +56,10 @@ export default class Day extends Component{
         {
           showModal &&
           <DayStateProvider.Provider value={{alarmHourRef, textOfNewAlert, addNewAlertFunction}}>
-            <AddNewAlert
-              day={day} data={data} alerts={alerts}
-              showModalF={showModalF}
-              changeAlerts={changeAlerts}
-            />
+            <AddNewAlert day={day} data={data} alerts={alerts} showModalF={showModalF} changeAlerts={changeAlerts}/>
           </DayStateProvider.Provider>
         }
-      </Fragment>
+      </>
     )
   }
 }

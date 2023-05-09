@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from "react";
+import React, {Component} from "react";
 import {BiLogOut} from 'react-icons/bi';
 import {ImSpinner9} from 'react-icons/im';
 import LoginForm from "./login/LoginForm";
@@ -55,17 +55,10 @@ const AuthHOC=(ToWrap)=>{
             return(
                 <div>
                     <title>Calendar</title>
-                    {loadingState===true && <ImSpinner9 style={styles.Spinner}/>}
+                    {loadingState && <ImSpinner9 style={styles.Spinner}/>}
                     {logged && <BiLogOut style={styles.logout} onClick={logout} className="controll"/>}
-                    {
-                    loadingState===false && logged &&
-                    <ToWrap
-                        alerts={downloadedAlerts} logged={logged}
-                        {...this.props}
-                        token={token}
-                    />}
-                    {loadingState===false && !logged &&
-                    <LoginForm changeStates={changeStates} logged={logged} message={message} {...this.props}/>}
+                    {!loadingState && logged && <ToWrap alerts={downloadedAlerts} logged={logged} {...this.props} token={token}/>}
+                    {!loadingState && !logged && <LoginForm changeStates={changeStates} logged={logged} message={message} {...this.props}/>}
                 </div>
             )
         }
