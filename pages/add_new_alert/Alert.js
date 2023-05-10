@@ -34,8 +34,11 @@ export default class Alert extends Component{
                 borderBottomRightRadius:'5px',
             },
         }
+        const preventSubmit=(e)=>{
+            e.preventDefault();
+        }
         return(
-            <form key={ID} style={styles.Alert} id="Alert">
+            <form key={ID} style={styles.Alert} id="Alert" onSubmit={preventSubmit}>
                 <input style={styles.inputs} type="time" defaultValue={hour} onChange={(e)=>{changeTask(e, ID)}}/>
                 <input style={{...styles.inputs, ...styles.textInput}} type="text" defaultValue={text} onChange={(e)=>{changeTask(e, ID)}}/>
                 <input style={styles.button} type="button" value="🗑️" onClick={()=>{deleteAlert(ID)}}/>

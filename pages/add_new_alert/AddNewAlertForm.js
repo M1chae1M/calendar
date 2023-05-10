@@ -48,8 +48,10 @@ export default class AddNewAlertForm extends Component{
             {value=>{
                 const {alarmHourRef, textOfNewAlert, addNewAlertFunction}=value??{};
                 const onSubmit=(e)=>{
-                    e.preventDefault()
-                    addNewAlertFunction()
+                    e.preventDefault();
+                    addNewAlertFunction();
+                    alarmHourRef.current.value='12:00';
+                    textOfNewAlert.current.value='';
                 }
                 const onClick=(e)=>{
                     e.stopPropagation();
