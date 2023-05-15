@@ -55,10 +55,14 @@ const AuthHOC=(ToWrap)=>{
             return(
                 <div>
                     <title>Calendar</title>
-                    {loadingState && <ImSpinner9 style={styles.Spinner}/>}
                     {logged && <BiLogOut style={styles.logout} onClick={logout} className="controll"/>}
-                    {!loadingState && logged && <ToWrap alerts={downloadedAlerts} logged={logged} {...this.props} token={token}/>}
-                    {!loadingState && !logged && <LoginForm changeStates={changeStates} logged={logged} message={message} {...this.props}/>}
+                    {
+                        !loadingState?
+                            logged?
+                                <ToWrap alerts={downloadedAlerts} logged={logged} {...this.props} token={token}/>:
+                            <LoginForm changeStates={changeStates} logged={logged} message={message} {...this.props}/>
+                        :<ImSpinner9 style={styles.Spinner}/>
+                    }
                 </div>
             )
         }
