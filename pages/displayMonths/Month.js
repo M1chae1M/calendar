@@ -37,6 +37,6 @@ export default class Month extends Component{
         <HeaderWithDays/>
         <div className="Month" style={styles.Month}>{children}</div>
       </div>
-    );
+    )
   }
 }

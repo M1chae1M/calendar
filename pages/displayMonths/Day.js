@@ -26,7 +26,6 @@ export default class Day extends Component{
         display:'grid',
         textAlign:'center',
         alignItems:'center',
-        display:'inline-block',
         justifyContent:'center',
         backgroundColor:!withAlert?'rgb(63, 62, 62)':'red',
         border:'solid #0affa1 1px',
