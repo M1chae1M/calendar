@@ -1,6 +1,7 @@
 import {colors} from "../AuthHOC";
 import React, {Component} from "react";
 import AddNewAlert from "../add_new_alert/AddNewAlert";
+import {DaySize} from "../_document";
 
 const alarmHourRef=React.createRef();
 const textOfNewAlert=React.createRef();
@@ -20,12 +21,8 @@ export default class Day extends Component{
         userSelect:'none',
         color:colors.light_green,
         gridColumnStart:day===1?startsFrom===0?7:startsFrom:'auto',
-        // width:'20px',
-        // height:'20px',
-
-        width:'33px',
-        height:'33px',
-
+        width:DaySize,
+        height:DaySize,
         display:'grid',
         textAlign:'center',
         alignItems:'center',

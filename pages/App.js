@@ -5,6 +5,7 @@ import React, {Component} from "react";
 import Month from "./displayMonths/Month";
 import ChangeYearMenu from "./change_year_menu/ChangeYearMenu";
 import {returnDaysInMonth} from "./_document";
+import {DaySize} from "./_document";
 
 export const AppStateProvider=React.createContext();
 
@@ -31,8 +32,7 @@ class Applic extends Component{
     const styles={
       Container:{
         display:'grid',
-        // gridTemplateColumns:'repeat(auto-fit, minmax(155px, 1fr))',
-        gridTemplateColumns:'repeat(auto-fit, minmax(255px, 1fr))',
+        gridTemplateColumns:`repeat(auto-fit, minmax(calc(9 * ${DaySize}), 1fr))`,
         justifyItems:'center',
       },
       Center:{

@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import Label from "../little_components/Label";
 import {colors} from "../AuthHOC";
+import {DaySize} from "../_document";
 
 export default class HeaderWithDays extends Component{
   render(){
@@ -14,17 +15,8 @@ export default class HeaderWithDays extends Component{
         gridGap:'1px',
         backgroundColor:`${colors.dark_grey}`,
         gridAutoFlow:'row',
-
-
-
-        // gridAutoColumns:'20px',
-        // gridTemplateColumns:'repeat(7, 20px)',
-        gridAutoColumns:'33px',
-        gridTemplateColumns:'repeat(7, 33px)',
-
-
-
-
+        gridAutoColumns:DaySize,
+        gridTemplateColumns:`repeat(7, ${DaySize})`,
         border:`solid ${colors.white} 1px`,
         height:'fit-content',
         display:'grid',
@@ -38,16 +30,8 @@ export default class HeaderWithDays extends Component{
         textAlign:'center',
         alignItems:'center',
         justifyContent:'center',
-
-
-        // width:'20px',
-        // height:'20px',
-        width:'33px',
-        height:'33px',
-
-
-
-
+        width:DaySize,
+        height:DaySize,
         display:'grid',
         border:`solid ${colors.light_green} 1px`,
         textShadow:`1px 1px white`,

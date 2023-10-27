@@ -2,6 +2,7 @@ import {colors} from "../AuthHOC";
 import React, {Component} from "react";
 import HeaderWithDays from "./HeaderWithDays";
 import Label from "../little_components/Label";
+import {DaySize} from "../_document";
 
 export default class Month extends Component{
   render(){
@@ -17,26 +18,13 @@ export default class Month extends Component{
         width:'fit-content',
         padding:'1px',
         gridGap:'1px',
-
-        // height:'125px',
-        height:`${(5*40)+5}px`,
-
-
+        height:`${(5*DaySize)+5}px`,
         backgroundColor:`${colors.dark_grey}`,
         gridAutoFlow:'row',
-
-        // gridAutoColumns:'20px',
-        // gridAutoRows:'20px',
-        gridAutoColumns:'33px',
-        gridAutoRows:'33px',
-
-
-        // gridTemplateColumns:'repeat(7, 20px)',
-        // gridTemplateRows:'repeat(6, minmax("auto", 20px))',
-        gridTemplateColumns:'repeat(7, 33px)',
-        gridTemplateRows:'repeat(6, minmax("auto", 33px))',
-
-
+        gridAutoColumns:DaySize,
+        gridAutoRows:DaySize,
+        gridTemplateColumns:`repeat(7, ${DaySize})`,
+        gridTemplateRows:`repeat(6, minmax("auto", ${DaySize}))`,
         border:`solid ${colors.white} 1px`,
         display:'grid',
         height:'fit-content',

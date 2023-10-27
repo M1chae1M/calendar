@@ -1,5 +1,4 @@
 import App from "./App";
-import React, {Component} from "react";
 
 export async function getStaticPaths(){
     const paths=[]
@@ -14,9 +13,6 @@ export async function getStaticProps({params}){
     return {props}
 }
 
-export default class WithDate extends Component{
-    render(){
-        const {dataFromURL}=this.props;
-        return <>{dataFromURL && <App dataFromURL={dataFromURL}/>}</>
-    }
-}
+const WithDate=({dataFromURL})=>dataFromURL && <App dataFromURL={dataFromURL}/>
+
+export default WithDate

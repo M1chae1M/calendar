@@ -30,3 +30,6 @@ export function returnDaysInMonth(year){
   }
   return daysInMonths
 }
+
+export const DaySize='38px'
+// export const DaySize='33px'
