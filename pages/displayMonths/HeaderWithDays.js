@@ -14,8 +14,17 @@ export default class HeaderWithDays extends Component{
         gridGap:'1px',
         backgroundColor:`${colors.dark_grey}`,
         gridAutoFlow:'row',
-        gridAutoColumns:'20px',
-        gridTemplateColumns:'repeat(7, 20px)',
+
+
+
+        // gridAutoColumns:'20px',
+        // gridTemplateColumns:'repeat(7, 20px)',
+        gridAutoColumns:'33px',
+        gridTemplateColumns:'repeat(7, 33px)',
+
+
+
+
         border:`solid ${colors.white} 1px`,
         height:'fit-content',
         display:'grid',
@@ -29,8 +38,16 @@ export default class HeaderWithDays extends Component{
         textAlign:'center',
         alignItems:'center',
         justifyContent:'center',
-        width:'20px',
-        height:'20px',
+
+
+        // width:'20px',
+        // height:'20px',
+        width:'33px',
+        height:'33px',
+
+
+
+
         display:'grid',
         border:`solid ${colors.light_green} 1px`,
         textShadow:`1px 1px white`,

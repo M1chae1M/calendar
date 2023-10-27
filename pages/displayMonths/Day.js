@@ -20,8 +20,12 @@ export default class Day extends Component{
         userSelect:'none',
         color:colors.light_green,
         gridColumnStart:day===1?startsFrom===0?7:startsFrom:'auto',
-        width:'20px',
-        height:'20px',
+        // width:'20px',
+        // height:'20px',
+
+        width:'33px',
+        height:'33px',
+
         display:'grid',
         textAlign:'center',
         alignItems:'center',

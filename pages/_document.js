@@ -15,3 +15,18 @@ export default function Document(){
     </Html>
   )
 }
+
+export function returnDaysInMonth(year){
+  const daysInMonths=[];
+  for(let i=0;i<12;i++){
+    const temporaryDate=new Date(year, (i+1), 0);
+    daysInMonths.push({
+      fullDate:temporaryDate,
+      days:temporaryDate.getDate(),
+      month:(i+1),
+      year:year,
+      startsFrom:new Date(year, i, 1).getDay(),
+    });
+  }
+  return daysInMonths
+}

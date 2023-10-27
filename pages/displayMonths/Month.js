@@ -17,13 +17,26 @@ export default class Month extends Component{
         width:'fit-content',
         padding:'1px',
         gridGap:'1px',
-        height:'125px',
+
+        // height:'125px',
+        height:`${(5*40)+5}px`,
+
+
         backgroundColor:`${colors.dark_grey}`,
         gridAutoFlow:'row',
-        gridAutoColumns:'20px',
-        gridAutoRows:'20px',
-        gridTemplateColumns:'repeat(7, 20px)',
-        gridTemplateRows:'repeat(6, minmax("auto", 20px))',
+
+        // gridAutoColumns:'20px',
+        // gridAutoRows:'20px',
+        gridAutoColumns:'33px',
+        gridAutoRows:'33px',
+
+
+        // gridTemplateColumns:'repeat(7, 20px)',
+        // gridTemplateRows:'repeat(6, minmax("auto", 20px))',
+        gridTemplateColumns:'repeat(7, 33px)',
+        gridTemplateRows:'repeat(6, minmax("auto", 33px))',
+
+
         border:`solid ${colors.white} 1px`,
         display:'grid',
         height:'fit-content',

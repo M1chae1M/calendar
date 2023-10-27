@@ -4,6 +4,7 @@ import Day from "./displayMonths/Day";
 import React, {Component} from "react";
 import Month from "./displayMonths/Month";
 import ChangeYearMenu from "./change_year_menu/ChangeYearMenu";
+import {returnDaysInMonth} from "./_document";
 
 export const AppStateProvider=React.createContext();
 
@@ -21,18 +22,8 @@ class Applic extends Component{
     return null
   }
   getDateData(component, year){
-    const daysInMonths=[];
-    for(let i=0;i<12;i++){
-      const temporaryDate=new Date(year, (i+1), 0);
-      daysInMonths.push({
-        fullDate:temporaryDate,
-        days:temporaryDate.getDate(),
-        month:(i+1),
-        year:year,
-        startsFrom:new Date(year, i, 1).getDay(),
-      });
-    }
-    component.setState({daysInMonths:daysInMonths});
+    const daysInMonths=returnDaysInMonth(year)
+    component.setState({daysInMonths})
   }
   render(){
     const {daysInMonths, actualYear, alerts}=this.state;
@@ -40,7 +31,8 @@ class Applic extends Component{
     const styles={
       Container:{
         display:'grid',
-        gridTemplateColumns:'repeat(auto-fit, minmax(155px, 1fr))',
+        // gridTemplateColumns:'repeat(auto-fit, minmax(155px, 1fr))',
+        gridTemplateColumns:'repeat(auto-fit, minmax(255px, 1fr))',
         justifyItems:'center',
       },
       Center:{
