@@ -1,7 +1,7 @@
 import React, {Component} from "react";
-import {BiLogOut} from 'react-icons/bi';
 import {ImSpinner9} from 'react-icons/im';
 import LoginForm from "./login/LoginForm";
+import LogoutBTN from "./LogoutBTN";
 
 const AuthHOC=(ToWrap)=>{
     return class HOC extends Component{
@@ -55,7 +55,7 @@ const AuthHOC=(ToWrap)=>{
             return(
                 <div>
                     <title>Calendar</title>
-                    {logged && <BiLogOut style={styles.logout} onClick={logout} className="controll"/>}
+                    {logged && <LogoutBTN style={styles.logout} onClick={logout}/>}
                     {
                         !loadingState?
                             logged?

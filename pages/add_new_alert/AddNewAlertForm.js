@@ -1,18 +1,11 @@
 import React, {Component} from "react";
-import  {AiFillCloseCircle} from 'react-icons/ai';
 import {colors} from "../AuthHOC";
 import {DayStateProvider} from "../displayMonths/Day";
+import CloseBTN from "./CloseBTN";
 
 export default class AddNewAlertForm extends Component{
     render(){
         const styles={
-            Close:{
-                position:'absolute',
-                top:'10px',
-                right:'10px',
-                color:colors.close_or_delete,
-                fontSize:'24px',
-            },
             form:{
                 display:'grid',
                 width:'100%',
@@ -62,7 +55,7 @@ export default class AddNewAlertForm extends Component{
                         <input style={styles.inputs} type="time" defaultValue={'12:00'} ref={alarmHourRef}/>
                         <input style={{...styles.inputs, ...styles.rightInput}} type="text" placeholder="new alert" id="addAlert" ref={textOfNewAlert}/>
                         <input style={styles.button} type="submit" value="add"/>
-                        <AiFillCloseCircle className="controll" style={styles.Close} onClick={onClick}/>
+                        <CloseBTN colors={colors} onClick={onClick}/>
                     </form>
                 )
             }}

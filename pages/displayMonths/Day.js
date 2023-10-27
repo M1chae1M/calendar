@@ -2,6 +2,7 @@ import {colors} from "../AuthHOC";
 import React, {Component} from "react";
 import AddNewAlert from "../add_new_alert/AddNewAlert";
 import {DaySize} from "../_document";
+import DayContainer from "./DayContainer";
 
 const alarmHourRef=React.createRef();
 const textOfNewAlert=React.createRef();
@@ -49,10 +50,10 @@ export default class Day extends Component{
     const showModalF=(newState)=>this.setState({showModal:newState})
     return(
       <>
-        <div className="Day controll" style={styles.Day} onClick={()=>{
+        <DayContainer style={styles.Day} onClick={()=>{
           showModalF(true)
           // podświetlaj wszystkie odpowiadające dni tygodnia w tym miesiącu
-        }}>{day}</div>
+        }}>{day}</DayContainer>
         {
           showModal &&
           <DayStateProvider.Provider value={{alarmHourRef, textOfNewAlert, addNewAlertFunction}}>
