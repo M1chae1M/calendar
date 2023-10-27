@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from "react";
+import React, {Component} from "react";
 import {BiLogOut} from 'react-icons/bi';
 import {ImSpinner9} from 'react-icons/im';
 import LoginForm from "./login/LoginForm";
@@ -16,9 +16,9 @@ const AuthHOC=(ToWrap)=>{
             this.auth(this)
         }
         auth(component){
-            const tryToken=localStorage.getItem('token')?JSON.parse(localStorage.getItem('token')):'';
+            const tryToken=localStorage.getItem('calendar_login_token')?JSON.parse(localStorage.getItem('calendar_login_token')):'';
             component.setState({token:tryToken},()=>{
-                fetchPOST('/api/auth',{token:tryToken})
+                fetchPOST(`${process.env.NEXT_PUBLIC_API_URL}auth`,{token:tryToken})
                 .then(({logged, message, alerts})=>component.setState({logged, message, alerts, loadingState:false}))
             })
         }
@@ -50,22 +50,19 @@ const AuthHOC=(ToWrap)=>{
             const downloadedAlerts=alerts?.alerts && JSON.parse(alerts.alerts);
             const changeStates=(newStates, callbackFunction)=>{this.setState(newStates, callbackFunction)}
             const logout=()=>{
-                this.setState({token:'', logged:false, alerts:{}},()=>localStorage.removeItem('token'))
+                this.setState({token:'', logged:false, alerts:{}},()=>localStorage.removeItem('calendar_login_token'))
             }
             return(
                 <div>
                     <title>Calendar</title>
-                    {loadingState===true && <ImSpinner9 style={styles.Spinner}/>}
                     {logged && <BiLogOut style={styles.logout} onClick={logout} className="controll"/>}
                     {
-                    loadingState===false && logged &&
-                    <ToWrap
-                        alerts={downloadedAlerts} logged={logged}
-                        {...this.props}
-                        token={token}
-                    />}
-                    {loadingState===false && !logged &&
-                    <LoginForm changeStates={changeStates} logged={logged} message={message} {...this.props}/>}
+                        !loadingState?
+                            logged?
+                                <ToWrap alerts={downloadedAlerts} logged={logged} {...this.props} token={token}/>:
+                            <LoginForm changeStates={changeStates} logged={logged} message={message} {...this.props}/>
+                        :<ImSpinner9 style={styles.Spinner}/>
+                    }
                 </div>
             )
         }

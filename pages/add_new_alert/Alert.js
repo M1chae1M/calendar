@@ -8,14 +8,10 @@ export default class Alert extends Component{
             Alert:{
                 justifyContent:'center',
                 display:'grid',
-                // gridTemplateColumns:'25% 50% calc(25% - 5px)',
                 gridTemplateColumns:'25% 50% calc(25%)',
-                // gridTemplateColumns:'calc(25% - 2.5px) 50% calc(25% - 2.5px)',
                 height:'30px',
                 width:'1fr',
                 overflow:'hidden',
-                // overflow:'visible',
-                // margin:'0',
             },
             inputs:{
                 color:colors.light_green,
@@ -38,8 +34,11 @@ export default class Alert extends Component{
                 borderBottomRightRadius:'5px',
             },
         }
+        const preventSubmit=(e)=>{
+            e.preventDefault();
+        }
         return(
-            <form key={ID} style={styles.Alert} id="Alert">
+            <form key={ID} style={styles.Alert} id="Alert" onSubmit={preventSubmit}>
                 <input style={styles.inputs} type="time" defaultValue={hour} onChange={(e)=>{changeTask(e, ID)}}/>
                 <input style={{...styles.inputs, ...styles.textInput}} type="text" defaultValue={text} onChange={(e)=>{changeTask(e, ID)}}/>
                 <input style={styles.button} type="button" value="🗑️" onClick={()=>{deleteAlert(ID)}}/>

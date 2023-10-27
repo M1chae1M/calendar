@@ -5,7 +5,7 @@ import Label from "../little_components/Label";
 
 export default class Month extends Component{
   render(){
-    const {children, data}=this.props ?? {};
+    const {children, data}=this.props??{};
     const monthName=data?.fullDate?.toLocaleString('en',{month:'long'})
     const styles={
       monthContainer:{

@@ -3,12 +3,11 @@ import {colors} from "../AuthHOC";
 import React, {Component} from "react";
 import Label from "../little_components/Label";
 import AddNewAlertForm from "./AddNewAlertForm";
-// import App from '../App';
 
 export default class AddNewAlert extends Component{
     render(){
         const {data, showModalF, day, alerts, changeAlerts}=this.props;
-        const {year, month}=data ?? {};
+        const {year, month}=data??{};
         let taskID;
         const styles={
             AddNewAlert:{
@@ -53,7 +52,7 @@ export default class AddNewAlert extends Component{
         }
         const changeTask=(e, index)=>{
             const target=e.target;
-            const {value, type}=target ?? {};
+            const {value, type}=target??{};
             const newAlerts=alerts?.[year]?.[month]?.[day];
             const copyAlerts=alerts?.[year]?.[month]?.[day]&&(alerts);
             const changeTaskWithIndex=alerts?.[year]?.[month]?.[day].findIndex(({ID})=>ID===index);
@@ -86,15 +85,9 @@ export default class AddNewAlert extends Component{
                         Array.from(alerts[year][month][day])
                         .sort((a, b)=>a.hour<b.hour?-1:a.hour>b.hour?1:0)
                         .map(({ID, hour, text})=>
-                            <Alert
-                                key={ID} changeTask={changeTask} text={text}
-                                hour={hour} deleteAlert={deleteAlert} ID={ID}
-                            />
+                            <Alert key={ID} changeTask={changeTask} text={text} hour={hour} deleteAlert={deleteAlert} ID={ID}/>
                         )
                     }
-
-                    {/* App:
-                    <App/> */}
                     </div>
                 </div>
             </div>

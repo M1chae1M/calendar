@@ -67,11 +67,11 @@ export default class LoginForm extends Component{
             const login=loginRef.current.value;
             const password=passwordRef.current.value;
 
-            fetchPOST('/api/login',{login, password})
+            fetchPOST(`${process.env.NEXT_PUBLIC_API_URL}login`,{login, password})
             .then(({token, logged, message, alerts})=>
             changeStates({token, logged, message, alerts},
                 ()=>{
-                    token && localStorage.setItem('token', JSON.stringify(token))
+                    token && localStorage.setItem('calendar_login_token', JSON.stringify(token))
                     changeStates({loadingState:false})
                 }
             ))
@@ -79,8 +79,8 @@ export default class LoginForm extends Component{
         const singUp=()=>{
             const login=loginRef.current.value;
             const password=passwordRef.current.value;
-
-            fetchPOST('/api/singup',{login, password})
+            
+            fetchPOST(`${process.env.NEXT_PUBLIC_API_URL}singup`,{login, password})
             .then(({message})=>changeStates({message}))
         }
         return(

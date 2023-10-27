@@ -1,1 +1,1 @@
-export const verifiKey=process.env.VERIFIKEY;
+export const verifiKey=process.env.VERIFI_KEY;

@@ -8,7 +8,7 @@ export default class ChangeYearButton extends Component{
         return(
             <AppStateProvider.Consumer>
             {value=>{
-                const {changeActualYear}=value ?? {};
+                const {changeActualYear}=value??{};
                 return(<>{
                     change<0?
                         <AiOutlineArrowLeft onClick={()=>{changeActualYear(change)}} className="controll"/>:
