@@ -1,4 +1,4 @@
-import { AiFillCloseCircle } from 'react-icons/ai';
+import {AiFillCloseCircle} from 'react-icons/ai';
 import styled from "styled-components";
 
 const CloseIcon = styled(AiFillCloseCircle)`
@@ -6,7 +6,7 @@ const CloseIcon = styled(AiFillCloseCircle)`
   position: absolute;
   top: 10px;
   right: 10px;
-  color: ${({colors}) => colors.close_or_delete};
+  color: ${({colors}) => colors?.close_or_delete??'black'};
   font-size: 24px;
   &:hover{
     transform: scale(1.3);
