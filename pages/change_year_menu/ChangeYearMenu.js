@@ -8,7 +8,7 @@ export default class ChangeYearMenu extends Component{
         const styles={
             changeYear:{
               textAlign:'center',
-            },
+            }
         }
         const year=daysInMonths?.[0]?.year
         return(

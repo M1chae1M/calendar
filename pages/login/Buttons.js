@@ -1,5 +1,5 @@
 const Buttons=({singUp,colors})=>{
-    const {light_green,dark_green,white}=colors
+    const {light_green,dark_green,white}=colors??'black'
     const styles={
         buttons:{
             width:'100%',
