@@ -76,7 +76,7 @@ export default class LoginForm extends Component{
                         <input style={styles.textInputs} type='text' ref={loginRef} placeholder='login' required/>
                         <Label>Password</Label>
                         <input style={styles.textInputs} type='password' ref={passwordRef} placeholder='password' required/>
-                        <Buttons singUp={singUp} colors={colors}/>
+                        <Buttons singUp={singUp}/>
                     </form>
                     <Label style={styles.messageBox}>{message && message}</Label>
                 </div>

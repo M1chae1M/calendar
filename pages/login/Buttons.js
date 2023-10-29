@@ -1,4 +1,6 @@
-const Buttons=({singUp,colors})=>{
+import colors from '../../config/colors.json'
+
+const Buttons=({singUp})=>{
     const {light_green,dark_green,white}=colors??'black'
     const styles={
         buttons:{

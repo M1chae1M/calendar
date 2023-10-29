@@ -55,7 +55,7 @@ export default class AddNewAlertForm extends Component{
                         <input style={styles.inputs} type="time" defaultValue={'12:00'} ref={alarmHourRef}/>
                         <input style={{...styles.inputs, ...styles.rightInput}} type="text" placeholder="new alert" id="addAlert" ref={textOfNewAlert}/>
                         <input style={styles.button} type="submit" value="add"/>
-                        <CloseBTN colors={colors} onClick={onClick}/>
+                        <CloseBTN onClick={onClick}/>
                     </form>
                 )
             }}

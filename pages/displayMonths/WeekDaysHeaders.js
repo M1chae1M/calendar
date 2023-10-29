@@ -1,8 +1,9 @@
 import {namesOfDays} from "../_document";
 import Label from "../little_components/Label";
 import {DaySize} from "../_document";
+import colors from '../../config/colors.json'
 
-const WeekDaysHeaders=({colors,changeSelected,selected})=>{
+const WeekDaysHeaders=({changeSelected,selected})=>{
     const {light_green}=colors??'black'
     const styles={
         display:'inline-blocks',
