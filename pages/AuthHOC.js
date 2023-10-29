@@ -69,14 +69,6 @@ const AuthHOC=(ToWrap)=>{
     }
 }
 
-export const colors={
-    white:'white',
-    light_green:'#0affa1',
-    dark_green:'rgb(90, 126, 90)',
-    close_or_delete:'#ff9f9f',
-    dark_grey:'rgb(63, 62, 62)',
-}
-
 export function fetchPOST(path, data){
     return(
       fetch(path,{

@@ -1,4 +1,4 @@
-import {colors} from "../AuthHOC";
+import colors from '../../config/colors.json'
 import React,{Component} from "react";
 
 export default class Label extends Component{

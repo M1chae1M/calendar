@@ -1,5 +1,5 @@
 import Alert from "./Alert";
-import {colors} from "../AuthHOC";
+import colors from '../../config/colors.json'
 import React, {Component} from "react";
 import Label from "../little_components/Label";
 import AddNewAlertForm from "./AddNewAlertForm";

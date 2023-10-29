@@ -1,4 +1,4 @@
-import {colors} from "../AuthHOC";
+import colors from '../../config/colors.json'
 import React, {Component} from "react";
 import HeaderWithDays from "./HeaderWithDays";
 import Label from "../little_components/Label";

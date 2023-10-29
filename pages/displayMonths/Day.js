@@ -1,4 +1,4 @@
-import {colors} from "../AuthHOC";
+import colors from '../../config/colors.json'
 import React, {Component} from "react";
 import AddNewAlert from "../add_new_alert/AddNewAlert";
 import DayContainer from "./DayContainer";

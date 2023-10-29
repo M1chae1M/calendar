@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {colors} from "../AuthHOC";
+import colors from '../../config/colors.json'
 import {DayStateProvider} from "../displayMonths/Day";
 import CloseBTN from "./CloseBTN";
 
