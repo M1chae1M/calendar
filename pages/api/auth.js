@@ -4,7 +4,7 @@ import {ConnectionWithDB} from "./connectionWithDB";
 
 export const JWT=require('jsonwebtoken');
 
-module.exports=(req, res)=>{
+export default (req, res)=>{
     const {body}=req;
     const {token}=body;
 

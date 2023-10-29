@@ -4,7 +4,7 @@ import {ConnectionWithDB} from "./connectionWithDB";
 import mysql from 'mysql2';
 import jwt from 'jsonwebtoken';
 
-module.exports=(req, res)=>{
+export default(req, res)=>{
     const {body}=req;
     const {login, password}=body;
     const query=`SELECT profile.login from profile WHERE profile.login="${login}" AND profile.password=SHA2('${password}', 256);`;

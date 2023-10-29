@@ -1,6 +1,6 @@
 import {myPromise} from './promiseF';
 
-module.exports=(req, res)=>{
+export default(req, res)=>{
     const {body}=req;
     const {login, password}=body;
     const query=`SELECT * FROM profile`;

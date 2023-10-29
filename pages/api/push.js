@@ -3,7 +3,7 @@ import {myPromise} from './promiseF';
 import {ConnectionWithDB} from './connectionWithDB';
 export const JWT=require('jsonwebtoken');
 
-module.exports=(req, res)=>{
+export default(req, res)=>{
     const {body}=req;
     const {token, newAlerts}=body??'';
     const stringed=JSON.stringify(newAlerts);
