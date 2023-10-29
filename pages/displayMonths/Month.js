@@ -7,6 +7,7 @@ import {DaySize} from "../_document";
 export default class Month extends Component{
   state={
     selected:'',
+    // selected:,
   }
   render(){
     const {children, data}=this.props??{};
@@ -36,23 +37,18 @@ export default class Month extends Component{
       }
     }
     const changeSelected=(newSelected)=>this.setState({selected:newSelected})
-    const childrenWithProps = React.Children?.map(children, (child) => {
-      if (React.isValidElement(child)){
-        return React.cloneElement(child,{
-          selected:selected,
-          // acDay:data.fullDate.getDay()
-        });
+    const childrenWithProps=React.Children?.map(children, (child)=>{
+      if(React.isValidElement(child)){
+        return React.cloneElement(child,{selected,changeSelected})
       }
       return child;
-    });
-
-    // console.log(data.fullDate.getDay())
+    })
     return(
       <div className="monthContainer" style={styles.monthContainer}>
         <Label>{monthName}</Label>
         <HeaderWithDays selected={selected} changeSelected={changeSelected}/>
         <div className="Month" style={styles.Month}>{childrenWithProps}</div>
-        </div>
+      </div>
     )
   }
 }

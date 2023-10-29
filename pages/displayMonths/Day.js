@@ -2,7 +2,7 @@ import colors from '../../config/colors.json'
 import React, {Component} from "react";
 import AddNewAlert from "../add_new_alert/AddNewAlert";
 import DayContainer from "./DayContainer";
-import {isWeekend, namesOfDays} from "../_document";
+import {isWeekend} from "../_document";
 
 const alarmHourRef=React.createRef();
 const textOfNewAlert=React.createRef();
@@ -14,22 +14,16 @@ export default class Day extends Component{
     showModal:false,
   }
   render(){
-    const {day, data, alerts, changeAlerts, withAlert,selected,y_test}=this.props??{};
+    const {day, data, alerts, changeAlerts, withAlert,selected,fullDate,changeSelected}=this.props??{};
     const {showModal}=this.state;
     const {startsFrom}=data??0;
-    const weekend=isWeekend(y_test, day)
-
-
-
-    const date=new Date(y_test?.year, y_test?.month-1, day);
-    // const dayOfWeek=namesOfDays[date.getDay()];
-    // date.getDay()===selected && console.log(dayOfWeek);
-
+    const weekend=isWeekend(fullDate, day)
+    const date=new Date(fullDate?.year, fullDate?.month-1, day).getDay()
     const styles={
       color:!withAlert?!weekend?colors.light_green:'black':colors.light_green,
       gridColumnStart:day===1?startsFrom===0?7:startsFrom:'auto',
       backgroundColor:!withAlert?!weekend?'rgb(63, 62, 62)':'rgb(0, 200, 200)':'red',
-    //   border:`solid 2px ${date.getDay()===selected+1 ? 'red':'black'}`,
+      border:`solid ${date===selected+1?'2px red':'#0affa1 1px'}`,
     }
     const addNewAlertFunction=()=>{
       const {month, year}=data??{};
@@ -48,9 +42,11 @@ export default class Day extends Component{
     }
     const showModalF=(newState)=>this.setState({showModal:newState})
     const ShowModalTrue=()=>showModalF(true)
+    const onMouseEnter=()=>changeSelected(date-1)
+    const onMouseLeave=()=>changeSelected('')
     return(
       <>
-        <DayContainer style={styles} onClick={ShowModalTrue}>{day}</DayContainer>
+        <DayContainer date={date} selected={selected} style={styles} onClick={ShowModalTrue} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>{day}</DayContainer>
         {
           showModal &&
           <DayStateProvider.Provider value={{alarmHourRef, textOfNewAlert, addNewAlertFunction}}>

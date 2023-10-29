@@ -21,8 +21,19 @@ const WeekDaysHeaders=({changeSelected,selected})=>{
         fontFamily:'sant-serif',
         margin:'0',
     }
+    const onMouseLeave=()=>changeSelected('')
     return namesOfDays?.map((x, i)=>(
-            <Label selected={selected} day_id={i} key={i} style={styles} onClick={(e)=>changeSelected(i)}>{x}</Label>
+            <Label selected={selected} day_id={i!==0?i:-1} key={i} style={styles}
+            // onMouseEnter={()=>changeSelected(i)}
+            onMouseEnter={()=>{
+                // console.log(i)
+                // console.log(namesOfDays[i])
+                // changeSelected(i!==6?i:0)
+                changeSelected(i!==6?i:-1)
+                // i===6 && console.log('to niedziela',i)
+                // changeSelected(6)
+            }}
+            onMouseLeave={onMouseLeave}>{x}</Label>
         )
     )
 }
