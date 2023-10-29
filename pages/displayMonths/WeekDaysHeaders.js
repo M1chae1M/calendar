@@ -3,9 +3,10 @@ import Label from "../little_components/Label";
 import {DaySize} from "../_document";
 
 const WeekDaysHeaders=({colors})=>{
+    const {light_green}=colors??'black'
     const styles={
         display:'inline-blocks',
-        color:`${colors.light_green}`,
+        color:`${light_green}`,
         color:'white',
         textAlign:'center',
         alignItems:'center',
@@ -13,14 +14,14 @@ const WeekDaysHeaders=({colors})=>{
         width:DaySize,
         height:DaySize,
         display:'grid',
-        border:`solid ${colors.light_green} 1px`,
+        border:`solid ${light_green} 1px`,
         textShadow:`1px 1px white`,
-        textShadow:`1px 1px ${colors.light_green}`,
+        textShadow:`1px 1px ${light_green}`,
         fontFamily:'sant-serif',
         margin:'0',
     }
     return namesOfDays?.map((x, i)=>(
-            <Label key={i} style={styles}>{x}</Label>
+            <Label key={i} style={styles} onClick={(e)=>console.log(`test ${x} ${i}`)}>{x}</Label>
         )
     )
 }

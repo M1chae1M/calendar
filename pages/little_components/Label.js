@@ -1,8 +1,9 @@
 import {colors} from "../AuthHOC";
-import React, {Component} from "react";
+import React,{Component} from "react";
 
 export default class Label extends Component{
     render(){
+        const {style,children}=this.props
         const styles={
             Label:{
                 width:'100%',
@@ -17,8 +18,8 @@ export default class Label extends Component{
                 textShadow:`1px 1px ${colors.light_green}`,
                 fontFamily:'"Press Start 2P", cursive',
                 margin:'2px',
-            },
+            }
         }
-        return <div id="Label" style={{...styles.Label, ...this.props.style}}>{this.props.children}</div>
+        return <div id="Label" style={{...styles.Label, ...style}} {...this.props}>{children}</div>
     }
 }
