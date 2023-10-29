@@ -2,7 +2,7 @@ import {namesOfDays} from "../_document";
 import Label from "../little_components/Label";
 import {DaySize} from "../_document";
 
-const WeekDaysHeaders=({colors})=>{
+const WeekDaysHeaders=({colors,changeSelected,selected})=>{
     const {light_green}=colors??'black'
     const styles={
         display:'inline-blocks',
@@ -21,7 +21,7 @@ const WeekDaysHeaders=({colors})=>{
         margin:'0',
     }
     return namesOfDays?.map((x, i)=>(
-            <Label key={i} style={styles} onClick={(e)=>console.log(`test ${x} ${i}`)}>{x}</Label>
+            <Label selected={selected} day_id={i} key={i} style={styles} onClick={(e)=>changeSelected(i)}>{x}</Label>
         )
     )
 }

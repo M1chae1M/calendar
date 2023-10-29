@@ -37,9 +37,9 @@ export const DaySize='45px'
 // export const DaySize='33px'
 export const namesOfDays=['M','T','W','T','F','S','S']
 
-export const isWeekend=(y_test,day)=>{
+export const isWeekend=(fullDate,day)=>{
   const names=[[...namesOfDays].pop(),...namesOfDays]
-  const date=new Date(y_test?.year, y_test?.month-1, day);
+  const date=new Date(fullDate?.year, fullDate?.month-1, day);
   const dayOfWeek=names[date.getDay()];
   return dayOfWeek==='S'
 }

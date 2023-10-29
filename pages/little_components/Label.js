@@ -3,7 +3,7 @@ import React,{Component} from "react";
 
 export default class Label extends Component{
     render(){
-        const {style,children}=this.props
+        const {style,children,selected,day_id}=this.props
         const styles={
             Label:{
                 width:'100%',
@@ -18,6 +18,10 @@ export default class Label extends Component{
                 textShadow:`1px 1px ${colors.light_green}`,
                 fontFamily:'"Press Start 2P", cursive',
                 margin:'2px',
+                // selected
+// day_id
+// border:`solid 1px ${selected && (selected===day_id) && day_id && 'red !important'}`,
+// boxShadow:'2px 2px red',
             }
         }
         return <div id="Label" style={{...styles.Label, ...style}} {...this.props}>{children}</div>

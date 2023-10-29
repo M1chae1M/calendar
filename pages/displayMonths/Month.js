@@ -5,8 +5,12 @@ import Label from "../little_components/Label";
 import {DaySize} from "../_document";
 
 export default class Month extends Component{
+  state={
+    selected:'',
+  }
   render(){
     const {children, data}=this.props??{};
+    const {selected}=this.state
     const monthName=data?.fullDate?.toLocaleString('en',{month:'long'})
     const styles={
       monthContainer:{
@@ -31,12 +35,24 @@ export default class Month extends Component{
         borderTop:'none',
       }
     }
+    const changeSelected=(newSelected)=>this.setState({selected:newSelected})
+    const childrenWithProps = React.Children?.map(children, (child) => {
+      if (React.isValidElement(child)){
+        return React.cloneElement(child,{
+          selected:selected,
+          // acDay:data.fullDate.getDay()
+        });
+      }
+      return child;
+    });
+
+    // console.log(data.fullDate.getDay())
     return(
       <div className="monthContainer" style={styles.monthContainer}>
         <Label>{monthName}</Label>
-        <HeaderWithDays/>
-        <div className="Month" style={styles.Month}>{children}</div>
-      </div>
+        <HeaderWithDays selected={selected} changeSelected={changeSelected}/>
+        <div className="Month" style={styles.Month}>{childrenWithProps}</div>
+        </div>
     )
   }
 }

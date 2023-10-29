@@ -5,6 +5,7 @@ import WeekDaysHeaders from "./WeekDaysHeaders";
 
 export default class HeaderWithDays extends Component{
   render(){
+    const {changeSelected,selected}=this.props
     const styles={
       marginTop:'5px',
       userSelect:'none',
@@ -24,7 +25,7 @@ export default class HeaderWithDays extends Component{
     }
     return(
       <div className="header" style={styles}>
-        <WeekDaysHeaders colors={colors}/>
+        <WeekDaysHeaders selected={selected} colors={colors} changeSelected={changeSelected}/>
       </div>
     )
   }
