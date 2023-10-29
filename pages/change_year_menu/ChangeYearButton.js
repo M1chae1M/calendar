@@ -1,6 +1,5 @@
-import React,{Component} from "react";
 import {AppStateProvider} from "../App";
-import{AiOutlineArrowLeft, AiOutlineArrowRight} from 'react-icons/ai';
+import{AiOutlineArrowLeft,AiOutlineArrowRight} from 'react-icons/ai';
 import styled from "styled-components";
 
 const styles=`font-size:30px;
@@ -14,21 +13,18 @@ margin:5px;
 const ArrowLeft=styled(AiOutlineArrowLeft)`${styles}`
 const ArrowRight=styled(AiOutlineArrowRight)`${styles}`
 
-export default class ChangeYearButton extends Component{
-    render(){
-        const {change}=this.props;
+const ChangeYearButton=({change})=>(
+    <AppStateProvider.Consumer>
+    {value=>{
+        const {changeActualYear}=value??{};
+        const onClick=()=>changeActualYear(change)
         return(
-            <AppStateProvider.Consumer>
-            {value=>{
-                const {changeActualYear}=value??{};
-                const onClick=()=>changeActualYear(change)
-                return(
-                    change<0?
-                        <ArrowLeft onClick={onClick}/>:
-                            <ArrowRight onClick={onClick}/>
-                )
-            }}
-            </AppStateProvider.Consumer>
+            change<0?
+                <ArrowLeft onClick={onClick}/>:
+                    <ArrowRight onClick={onClick}/>
         )
-    }
-}
+    }}
+    </AppStateProvider.Consumer>
+)
+
+export default ChangeYearButton

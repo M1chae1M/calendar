@@ -3,7 +3,7 @@ import Label from "../little_components/Label";
 import {DaySize} from "../_document";
 import colors from '../../config/colors.json'
 
-const WeekDaysHeaders=({changeSelected,selected})=>{
+const WeekDaysHeaders=({changeSelected})=>{
     const {light_green}=colors??'black'
     const styles={
         display:'inline-blocks',
@@ -23,17 +23,7 @@ const WeekDaysHeaders=({changeSelected,selected})=>{
     }
     const onMouseLeave=()=>changeSelected('')
     return namesOfDays?.map((x, i)=>(
-            <Label selected={selected} day_id={i!==0?i:-1} key={i} style={styles}
-            // onMouseEnter={()=>changeSelected(i)}
-            onMouseEnter={()=>{
-                // console.log(i)
-                // console.log(namesOfDays[i])
-                // changeSelected(i!==6?i:0)
-                changeSelected(i!==6?i:-1)
-                // i===6 && console.log('to niedziela',i)
-                // changeSelected(6)
-            }}
-            onMouseLeave={onMouseLeave}>{x}</Label>
+            <Label key={i} style={styles} onTouchStart={()=>changeSelected(i!==6?i:-1)} onMouseEnter={()=>changeSelected(i!==6?i:-1)} onMouseLeave={onMouseLeave}>{x}</Label>
         )
     )
 }

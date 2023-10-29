@@ -46,9 +46,7 @@ export default class Day extends Component{
     const onMouseLeave=()=>changeSelected('')
     return(
       <>
-        <DayContainer date={date} selected={selected} style={styles} onClick={ShowModalTrue}
-        onTouchStart={onMouseEnter}
-        onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>{day}</DayContainer>
+        <DayContainer date={date} selected={selected} style={styles} onClick={ShowModalTrue} onTouchStart={onMouseEnter} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>{day}</DayContainer>
         {
           showModal &&
           <DayStateProvider.Provider value={{alarmHourRef, textOfNewAlert, addNewAlertFunction}}>

@@ -24,7 +24,7 @@ export default class HeaderWithDays extends Component{
       borderBottom:'none',
     }
     return(
-      <div className="header" style={styles}>
+      <div style={styles}>
         <WeekDaysHeaders selected={selected} changeSelected={changeSelected}/>
       </div>
     )
