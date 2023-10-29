@@ -48,32 +48,9 @@ export default class Day extends Component{
     }
     const showModalF=(newState)=>this.setState({showModal:newState})
     const ShowModalTrue=()=>showModalF(true)
-
-
-
     return(
       <>
-        <DayContainer style={styles} onClick={ShowModalTrue}>
-            {day}
-            {/* {data.fullDate.getDay()===selected && day} */}
-            {/* {selected} */}
-            {/* {data.fullDate.getDay()} */}
-            {/* {console.log(data.fullDate)} */}
-            {/* {console.log(y_test.fullDate)} */}
-
-            {/* {y_test.fullDate.getDay()} */}
-            </DayContainer>
-
-
-
-        {/* {console.log(acDay,selected)} */}
-        {/* {acDay} */}
-        {/* {selected} */}
-        {/* {acDay===selected && 't'} */}
-        {/* {data.fullDate.getDay()} */}
-        {/* {data.fullDate.getDay()===selected && console.log(data.fullDate.getDay())} */}
-
-
+        <DayContainer style={styles} onClick={ShowModalTrue}>{day}</DayContainer>
         {
           showModal &&
           <DayStateProvider.Provider value={{alarmHourRef, textOfNewAlert, addNewAlertFunction}}>
