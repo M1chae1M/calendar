@@ -14,7 +14,7 @@ export default class Day extends Component{
     showModal:false,
   }
   render(){
-    const {day, data, alerts, changeAlerts, withAlert}=this.props;
+    const {day, data, alerts, changeAlerts, withAlert}=this.props??{};
     const {showModal}=this.state;
     const {startsFrom}=data??0;
     const weekend=isWeekend(this.props.y_test, day)

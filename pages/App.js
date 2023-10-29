@@ -64,9 +64,9 @@ class Applic extends Component{
           <Month key={y.month} data={y}>
             {Array(y.days).fill(0).map((x,i)=>
               <Day
-              y_test={y}
+                y_test={y}
                 key={i+1} data={y} alerts={alerts} day={i+1} changeAlerts={changeAlerts}
-                withAlert={alerts?.[y.year]?.[y.month]?.[i+1]?.length>0?true:false}
+                withAlert={alerts?.[y?.year]?.[y?.month]?.[i+1]?.length>0?true:false}
               />
             )}
           </Month>)
