@@ -1,8 +1,8 @@
 import {colors} from "../AuthHOC";
 import React, {Component} from "react";
 import AddNewAlert from "../add_new_alert/AddNewAlert";
-import {DaySize} from "../_document";
 import DayContainer from "./DayContainer";
+import {isWeekend} from "../_document";
 
 const alarmHourRef=React.createRef();
 const textOfNewAlert=React.createRef();
@@ -17,20 +17,11 @@ export default class Day extends Component{
     const {day, data, alerts, changeAlerts, withAlert}=this.props;
     const {showModal}=this.state;
     const {startsFrom}=data??0;
+    const weekend=isWeekend(this.props.y_test, day)
     const styles={
-      Day:{
-        userSelect:'none',
-        color:colors.light_green,
-        gridColumnStart:day===1?startsFrom===0?7:startsFrom:'auto',
-        width:DaySize,
-        height:DaySize,
-        display:'grid',
-        textAlign:'center',
-        alignItems:'center',
-        justifyContent:'center',
-        backgroundColor:!withAlert?'rgb(63, 62, 62)':'red',
-        border:'solid #0affa1 1px',
-      }
+      color:!withAlert?!weekend?colors.light_green:'black':colors.light_green,
+      gridColumnStart:day===1?startsFrom===0?7:startsFrom:'auto',
+      backgroundColor:!withAlert?!weekend?'rgb(63, 62, 62)':'rgb(0, 200, 200)':'red',
     }
     const addNewAlertFunction=()=>{
       const {month, year}=data??{};
@@ -48,12 +39,10 @@ export default class Day extends Component{
       changeAlerts(updatedAlerts);
     }
     const showModalF=(newState)=>this.setState({showModal:newState})
+    const ShowModalTrue=()=>showModalF(true)
     return(
       <>
-        <DayContainer style={styles.Day} onClick={()=>{
-          showModalF(true)
-          // podświetlaj wszystkie odpowiadające dni tygodnia w tym miesiącu
-        }}>{day}</DayContainer>
+        <DayContainer style={styles} onClick={ShowModalTrue}>{day}</DayContainer>
         {
           showModal &&
           <DayStateProvider.Provider value={{alarmHourRef, textOfNewAlert, addNewAlertFunction}}>

@@ -60,10 +60,11 @@ class Applic extends Component{
         <ChangeYearMenu daysInMonths={daysInMonths}/>
         <div id="Container" style={styles.Container}>
         {
-          daysInMonths.map((y)=>
+          daysInMonths?.map(y=>
           <Month key={y.month} data={y}>
             {Array(y.days).fill(0).map((x,i)=>
               <Day
+              y_test={y}
                 key={i+1} data={y} alerts={alerts} day={i+1} changeAlerts={changeAlerts}
                 withAlert={alerts?.[y.year]?.[y.month]?.[i+1]?.length>0?true:false}
               />
