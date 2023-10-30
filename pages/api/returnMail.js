@@ -1,6 +1,9 @@
 const returnMail=(alert)=>{
-    const {variant,text,changed,to,from,hour}=alert??{}
-    const {day,month,year}=alert?.date??{}
+    const {variant,text,changed,to,from,hour,date}=alert??{}
+    const {year}=alert?.date??{}
+    const day=date?.day<10?"0"+date?.day:date?.day
+    const month=date?.month<10?"0"+date?.month:date?.month
+    
     if(variant==='add'){
         return {
             subject:`Dodano nowe wydarzenie dnia ${day}-${month}-${year}.`,

@@ -14,6 +14,7 @@ const sendMail=(mailTo,mail_message)=>{
     const mailOptions={
         from:MAIL_login,
         to:mailTo,
+        // to:MAIL_login,
         subject:mail_message?.subject??'',
         text:mail_message?.text??'',
     };
