@@ -1,4 +1,6 @@
-const returnMail=(alert)=>{
+import DB_instance from "../database"
+
+const returnMail=async(alert,email)=>{
     const {variant,text,changed,to,from,hour,date}=alert??{}
     const {year}=alert?.date??{}
     const day=date?.day<10?"0"+date?.day:date?.day
@@ -6,9 +8,20 @@ const returnMail=(alert)=>{
     const fullDate=`${day}-${month}-${year}`
     
     if(variant==='add'){
+        const mail_subject=`Dodano nowe wydarzenie dnia ${fullDate}.`
+        const mail_text=`Dodano nowe wydarzenie dnia ${fullDate} o godzinie ${hour}. Jego treść brzmi "${text}".`
+
+        await DB_instance.insert('alerts_queue',{
+            id:null,
+            date:`${year}-${month}-${day} ${hour}`,
+            subject:mail_subject,
+            text:mail_text,
+            email,
+        })
+
         return {
-            subject:`Dodano nowe wydarzenie dnia ${fullDate}.`,
-            text:`Dodano nowe wydarzenie dnia ${fullDate} o godzinie ${hour}. Jego treść brzmi "${text}".`,
+            subject:mail_subject,
+            text:mail_text,
         }
     }else if(variant==='change'){
         const changedField=changed==='text'?'treść':'godzinę'
