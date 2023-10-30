@@ -2,8 +2,8 @@ import {verifiKey} from './verifiKey';
 import {myPromise} from './promiseF';
 import {ConnectionWithDB} from './connectionWithDB';
 export const JWT=require('jsonwebtoken');
-import returnMail from './returnMail';
-import sendMail from './sendMail';
+import returnMail from './mails/returnMail';
+import sendMail from './mails/sendMail';
 
 export default (req, res)=>{
     const {body}=req;

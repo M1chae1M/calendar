@@ -4,6 +4,7 @@ export default function Document(){
   return(
     <Html lang="pl">
       <Head>
+        <title>Calendar</title>
         <link rel="preconnect" href="https://fonts.googleapis.com"/>
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true"/>
         <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"/>
@@ -42,4 +43,15 @@ export const isWeekend=(fullDate,day)=>{
   const date=new Date(fullDate?.year, fullDate?.month-1, day);
   const dayOfWeek=names[date.getDay()];
   return dayOfWeek==='S'
+}
+
+export function fetchPOST(path, data){
+  return(
+    fetch(path,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(data)
+    })
+    .then(res=>res.json())
+  )
 }

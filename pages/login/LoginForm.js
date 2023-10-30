@@ -1,7 +1,7 @@
 import colors from '../../config/colors.json'
 import React,{Component} from "react";
 import Label from "../little_components/Label";
-import {fetchPOST} from "../AuthHOC";
+import {fetchPOST} from '../_document';
 import Info from "./Info";
 import Buttons from "./Buttons";
 
