@@ -46,12 +46,12 @@ class Applic extends Component{
         Router.push(`/${newYear}`);
       });
     }
-    const changeAlerts=(newAlerts)=>{
+    const changeAlerts=(newAlerts,alert)=>{
       this.setState({alerts:newAlerts},()=>{
         fetch(`${process.env.NEXT_PUBLIC_API_URL}push`,{
           method:'POST',
           headers:{'Content-Type':'application/json'},
-          body:JSON.stringify({token, newAlerts})
+          body:JSON.stringify({token, newAlerts,alert})
         })
       })
     }

@@ -12,25 +12,38 @@ export default class AddNewAlert extends Component{
         const {year, month}=data??{};
         let taskID;
         const deleteAlert=(index)=>{
-            const copyAlerts=alerts?.[year]?.[month]?.[day]&&(alerts);
+            const copyAlerts=alerts?.[year]?.[month]?.[day]&& alerts;
+            const deleted=alerts?.[year]?.[month]?.[day].filter(({ID})=>ID===index)[0]
             const newAlertsBeforeDelete=alerts?.[year]?.[month]?.[day].filter(({ID})=>ID!==index);
 
             copyAlerts[year][month][day]=newAlertsBeforeDelete;
-            changeAlerts(copyAlerts)
+
+            // console.log(deleted.text,deleted.hour)
+            const {text,hour}=deleted
+            changeAlerts(copyAlerts,{variant:'delete',text,hour,date:{year,month,day}})
         }
         const changeTask=(e, index)=>{
             const target=e.target;
             const {value, type}=target??{};
             const newAlerts=alerts?.[year]?.[month]?.[day];
-            const copyAlerts=alerts?.[year]?.[month]?.[day]&&(alerts);
+            const copyAlerts=alerts?.[year]?.[month]?.[day]&& alerts;
             const changeTaskWithIndex=alerts?.[year]?.[month]?.[day].findIndex(({ID})=>ID===index);
+
+            const {text}=newAlerts[changeTaskWithIndex]
+            const {hour}=newAlerts[changeTaskWithIndex]
 
             if(type==='text') newAlerts[changeTaskWithIndex].text=value;
             else newAlerts[changeTaskWithIndex].hour=value;
 
             copyAlerts[year][month][day]=newAlerts;
 
-            debounce(copyAlerts);
+            debounce(copyAlerts,{
+                variant:'change',
+                changed:type,
+                from:{text, hour},
+                date:{year,month,day},
+                to:value
+            });
         }
         const close=(e)=>{
             console.log('test')
@@ -39,9 +52,9 @@ export default class AddNewAlert extends Component{
                 showModalF(false)
             }
         }
-        function debounce(copyAlerts){
+        function debounce(copyAlerts,alert){
             if(taskID) clearTimeout(taskID)
-            taskID=setTimeout(()=>{changeAlerts(copyAlerts)},1000);
+            taskID=setTimeout(()=>{changeAlerts(copyAlerts,alert)},1000);
         }
         return(
             <AddNewAlertBackground onClick={close} id="background">

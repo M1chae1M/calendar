@@ -27,18 +27,20 @@ export default class Day extends Component{
     }
     const addNewAlertFunction=()=>{
       const {month, year}=data??{};
-      const newAlertText=textOfNewAlert.current.value;
+      const text=textOfNewAlert.current.value;
+      const hour=alarmHourRef.current.value
       const newTaskID=new Date().getTime();
       
       const dayTasks=[...alerts?.[year]?.[month]?.[day] || []];
-      dayTasks.push({ID: newTaskID, text: newAlertText, hour: alarmHourRef.current.value});
+      dayTasks.push({ID: newTaskID, text, hour});
       
       const newMonth={...alerts?.[year]?.[month], [day]:dayTasks};
       const newYear={...alerts?.[year], [month]:newMonth};
       const updatedAlerts={...alerts, [year]:newYear};
       
       localStorage.setItem('alerts',JSON.stringify(updatedAlerts));
-      changeAlerts(updatedAlerts);
+      changeAlerts(updatedAlerts,{variant:'add',text,hour,date:{year,month,day}});
+      
     }
     const showModalF=(newState)=>this.setState({showModal:newState})
     const ShowModalTrue=()=>showModalF(true)
