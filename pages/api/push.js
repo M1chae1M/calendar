@@ -40,8 +40,8 @@ export default async(req, res)=>{
 
 
     const schedule = require('node-schedule');
-    // const time='*/3600 * * * * *'
-    const time='*/10 * * * * *'
+    const time='*/3600 * * * * *'
+    // const time='*/10 * * * * *'
     // const time='*/25 * * * * *'
 
     schedule.scheduleJob(time, async function () {
