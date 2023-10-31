@@ -39,19 +39,20 @@ export default async(req, res)=>{
 
 
 
-    // const schedule = require('node-schedule');
-    // // const time='*/3600 * * * * *'
-    // const time='*/10 * * * * *'
+    const schedule = require('node-schedule');
+    // const time='*/3600 * * * * *'
+    const time='*/10 * * * * *'
+    // const time='*/25 * * * * *'
 
-    // schedule.scheduleJob(time, async function () {
-    //   const queue=await DB_instance.select('alerts_queue','*',{})
+    schedule.scheduleJob(time, async function () {
+      const queue=await DB_instance.select('alerts_queue','*',{})
 
-    //   const filtered=await queue?.filter(({date})=>((date-new Date())/3600000)<0.5)
-    //   await filtered?.map(async ({email,subject,text,id})=>{
-    //     await DB_instance.delete('alerts_queue',{id});
-    //     await sendMail(email,{subject,text});
-    //   })
-    // })
+      const filtered=await queue?.filter(({date})=>((date-new Date())/3600000)<0.5)
+      await filtered?.map(async ({email,subject,text,id})=>{
+        await DB_instance.delete('alerts_queue',{id});
+        await sendMail(email,{subject,text});
+      })
+    })
 
     connection.query(query,(err)=>{
       res.send(err)
