@@ -6,7 +6,7 @@ import returnMail from './mails/returnMail';
 import sendMail from './mails/sendMail';
 import DB_instance from './database';
 
-export default (req, res)=>{
+export default async(req, res)=>{
     const {body}=req;
     const {token, newAlerts,alert}=body??'';
     const stringed=JSON.stringify(newAlerts);
@@ -17,7 +17,7 @@ export default (req, res)=>{
     
     const connection=ConnectionWithDB()
 
-    connection.query(getMail, (error, results, fields) => {
+    connection.query(getMail, async(error, results, fields) => {
       if(error){
         console.error('Błąd zapytania:', error);
         return connection.end();
@@ -25,7 +25,7 @@ export default (req, res)=>{
       
       if(results.length > 0){
         const email=results[0].email;
-        const mail_message=returnMail(alert,email)
+        const mail_message=await returnMail(alert,email)
         sendMail(email,mail_message)
       }else{
         console.log('Brak wyników.');

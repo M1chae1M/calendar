@@ -18,9 +18,14 @@ export default class AddNewAlert extends Component{
 
             copyAlerts[year][month][day]=newAlertsBeforeDelete;
 
-            // console.log(deleted.text,deleted.hour)
             const {text,hour}=deleted
-            changeAlerts(copyAlerts,{variant:'delete',text,hour,date:{year,month,day}})
+            changeAlerts(copyAlerts,{
+                ID:deleted.ID,
+                variant:'delete',
+                text,
+                hour,
+                date:{year,month,day}
+            })
         }
         const changeTask=(e, index)=>{
             const target=e.target;
@@ -42,11 +47,11 @@ export default class AddNewAlert extends Component{
                 changed:type,
                 from:{text, hour},
                 date:{year,month,day},
-                to:value
+                to:value,
+                ID:newAlerts[changeTaskWithIndex].ID,
             });
         }
         const close=(e)=>{
-            console.log('test')
             if(e.target.id==='background'){
                 e.stopPropagation()
                 showModalF(false)

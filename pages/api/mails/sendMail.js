@@ -13,12 +13,10 @@ const sendMail=(mailTo,mail_message)=>{
     })
     const mailOptions={
         from:MAIL_login,
-        // to:mailTo,
-        to:MAIL_login,
+        to:mailTo,
         subject:mail_message?.subject??'',
         text:mail_message?.text??'',
-    };
-      
+    }
     transporter.sendMail(mailOptions, (error, info) => {
         if(error) console.log('Błąd wysyłania e-mailad:' + error);
         else console.log('E-mail został wysłanyd:' + info.response);

@@ -48,6 +48,14 @@ class Applic extends Component{
     }
     const changeAlerts=(newAlerts,alert)=>{
       this.setState({alerts:newAlerts},()=>{
+
+
+
+console.log(
+  newAlerts,
+  alert
+)
+
         fetch(`${process.env.NEXT_PUBLIC_API_URL}push`,{
           method:'POST',
           headers:{'Content-Type':'application/json'},

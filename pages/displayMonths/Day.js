@@ -39,8 +39,7 @@ export default class Day extends Component{
       const updatedAlerts={...alerts, [year]:newYear};
       
       localStorage.setItem('alerts',JSON.stringify(updatedAlerts));
-      changeAlerts(updatedAlerts,{variant:'add',text,hour,date:{year,month,day}});
-      
+      changeAlerts(updatedAlerts,{ID:newTaskID,variant:'add',text,hour,date:{year,month,day}});
     }
     const showModalF=(newState)=>this.setState({showModal:newState})
     const ShowModalTrue=()=>showModalF(true)
