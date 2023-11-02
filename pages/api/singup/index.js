@@ -1,5 +1,9 @@
 import DB_instance from '../database';
 import {myPromise} from '../promiseF';
+import {verifiKey} from '../verifiKey';
+import {ConnectionWithDB} from '../connectionWithDB';
+import mysql from 'mysql2';
+import jwt from 'jsonwebtoken';
 
 export default async(req, res)=>{
     const {body}=req;
