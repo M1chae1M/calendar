@@ -1,5 +1,5 @@
-import DB_instance from './database';
-import {myPromise} from './promiseF';
+import DB_instance from '../database';
+import {myPromise} from '../promiseF';
 
 export default async(req, res)=>{
     const {body}=req;

@@ -1,9 +1,9 @@
-import {verifiKey} from './verifiKey';
-import {myPromise} from './promiseF';
-import {ConnectionWithDB} from "./connectionWithDB";
+import {verifiKey} from '../verifiKey';
+import {myPromise} from '../promiseF';
+import {ConnectionWithDB} from '../connectionWithDB';
 import mysql from 'mysql2';
 import jwt from 'jsonwebtoken';
-import DB_instance from './database';
+import DB_instance from '../database';
 
 export default async(req, res)=>{
     const {body}=req;
