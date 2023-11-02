@@ -20,7 +20,7 @@ const AuthHOC=(ToWrap)=>{
             const tryToken=localStorage.getItem('calendar_login_token')?JSON.parse(localStorage.getItem('calendar_login_token')):'';
             component.setState({token:tryToken},()=>{
                 fetchPOST(`${process.env.NEXT_PUBLIC_API_URL}auth`,{token:tryToken})
-                .then(({logged, message, alerts})=>component.setState({logged, message, alerts, loadingState:false},()=>console.log(alerts.alerts)))
+                .then(({logged, message, alerts})=>component.setState({logged, message, alerts, loadingState:false},()=>console.log(alerts?.alerts??{})))
             })
         }
         render(){
