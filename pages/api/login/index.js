@@ -7,8 +7,8 @@ import DB_instance from '../database';
 // import knex from 'knex';
 
 export default async(req, res)=>{
-    const {body}=req;
-    const {login, password}=body;
+    const {body}=req??{};
+    const {login, password}=body??'';
     // const query=`SELECT profile.login from profile WHERE profile.login="${login}" AND profile.password=SHA2('${password}', 256);`;
     // const queryForAlerts=`SELECT * from alerts WHERE alerts.user="${login}";`;
     const verifiToken=jwt.sign({login}, verifiKey);
