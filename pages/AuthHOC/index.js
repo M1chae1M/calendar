@@ -20,16 +20,14 @@ const AuthHOC=(ToWrap)=>{
             const tryToken=localStorage.getItem('calendar_login_token')?JSON.parse(localStorage.getItem('calendar_login_token')):'';
             component.setState({token:tryToken},()=>{
                 fetchPOST(`${process.env.NEXT_PUBLIC_API_URL}auth`,{token:tryToken})
-                .then(({logged, message, alerts})=>component.setState({logged, message, alerts, loadingState:false},()=>console.log(alerts??{})))
+                .then(({logged, message, alerts})=>component.setState({logged, message, alerts, loadingState:false}))
             })
         }
         render(){
             const {logged, message, alerts, token, loadingState}=this.state;
-            const downloadedAlerts=alerts?.alerts && JSON.parse(alerts.alerts);
+            const downloadedAlerts=alerts?.alerts && JSON.parse(alerts?.alerts);
             const changeStates=(newStates, callbackFunction)=>{this.setState(newStates, callbackFunction)}
-            const logout=()=>{
-                this.setState({token:'', logged:false, alerts:{}},()=>localStorage.removeItem('calendar_login_token'))
-            }
+            const logout=()=>this.setState({token:'', logged:false, alerts:{}},()=>localStorage.removeItem('calendar_login_token'))
             return(
                 <>
                     {logged && <LogoutBTN onClick={logout}/>}
