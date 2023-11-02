@@ -10,5 +10,11 @@ export default async(req,res)=>{
         email:MAIL_login,
         alertID:'169877762mmmm974',
     })
-    res.status(200).json({test:'wynik raczej pozytywny'})
+
+    const data2=await DB_instance.select('alerts','*',{user:'GraMar1963#'})
+
+    res.status(200).json({
+        test:'wynik raczej pozytywny',
+        data2,
+    })
 }
