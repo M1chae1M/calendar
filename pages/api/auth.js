@@ -5,7 +5,7 @@ import DB_instance from './database';
 
 export const JWT=require('jsonwebtoken');
 
-export default async(req, res)=>{
+export default async(req,res)=>{
     const {body}=req??{};
     const {token}=body??'';
 
