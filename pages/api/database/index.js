@@ -28,6 +28,9 @@ class DB{
     selected_page(table, page, limit){
         return this.knex(table).select('*').limit(limit).offset(page * limit).catch(error=>'niestety nie udało się pobrać rekordów z bazy danych');
     }
+    SHA2(toHash){
+        return this.knex.raw('SHA2(?, 256)', [toHash])
+    }
 }
 
 const DB_instance=new DB()

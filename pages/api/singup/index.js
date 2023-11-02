@@ -6,8 +6,8 @@ import mysql from 'mysql2';
 import jwt from 'jsonwebtoken';
 
 export default async(req, res)=>{
-    const {body}=req;
-    const {login, password}=body;
+    const {body}=req??{};
+    const {login, password}=body??'';
     const data=await DB_instance.select('profile','*',{})
 
     if(login===''||password===''||password===login){
