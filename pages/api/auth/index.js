@@ -1,7 +1,7 @@
-import {verifiKey} from './verifiKey';
+import {verifiKey} from '../verifiKey';
 // import {myPromise} from './promiseF';
 // import {ConnectionWithDB} from "./connectionWithDB";
-import DB_instance from './database';
+import DB_instance from '../database';
 
 export const JWT=require('jsonwebtoken');
 
