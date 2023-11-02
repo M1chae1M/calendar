@@ -1,10 +1,10 @@
-import {verifiKey} from './verifiKey';
-import {myPromise} from './promiseF';
-import {ConnectionWithDB} from './connectionWithDB';
+import {verifiKey} from '../verifiKey';
+import {myPromise} from '../promiseF';
+import {ConnectionWithDB} from '../connectionWithDB';
 export const JWT=require('jsonwebtoken');
-import returnMail from './mails/returnMail';
-import sendMail from './mails/sendMail';
-import DB_instance from './database';
+import returnMail from '../mails/returnMail';
+import sendMail from '../mails/sendMail';
+import DB_instance from '../database';
 
 export default async(req, res)=>{
     const {body}=req;
